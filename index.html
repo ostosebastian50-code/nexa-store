@@ -1,62 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xenox Recargas</title>
 
 <style>
-
 body{
-background:#0b0718;
+background:#0b0718 url('https://i.pinimg.com/736x/52/98/df/5298dff99b00bdee3143d64a204b8aa2.jpg') no-repeat center center fixed;
+background-size:cover;
 font-family:Arial;
 color:white;
 margin:0;
 }
 
-/* PANTALLA DE CARGA */
-
-#pantallaCarga{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#0b0718;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-
-.tituloCarga{
-color:#c084fc;
-font-size:36px;
-margin-bottom:20px;
-animation:neon 2s infinite alternate;
-}
-
-.barraCarga{
-width:250px;
-height:12px;
-background:#1c1536;
-border-radius:10px;
-overflow:hidden;
-}
-
-.progreso{
-height:100%;
-width:0%;
-background:#7c3aed;
-animation:cargar 3s linear forwards;
-}
-
-@keyframes cargar{
-0%{width:0}
-100%{width:100%}
-}
-
+/* HEADER */
 .header{
 text-align:center;
 font-size:32px;
@@ -72,6 +29,7 @@ from{ text-shadow:0 0 5px #a855f7 }
 to{ text-shadow:0 0 20px #a855f7 }
 }
 
+/* ESTADO SERVICIO */
 .estado-servicio{
 text-align:center;
 background:#0f2f1f;
@@ -81,6 +39,7 @@ font-size:14px;
 border-bottom:1px solid #22c55e;
 }
 
+/* CONTAINER */
 .container{
 max-width:520px;
 margin:auto;
@@ -88,7 +47,7 @@ padding:15px;
 }
 
 .card{
-background:#151126;
+background:#151126cc;
 border:1px solid #7c3aed;
 border-radius:14px;
 padding:20px;
@@ -157,6 +116,7 @@ border:none;
 border-radius:8px;
 background:#201942;
 color:white;
+font-weight:bold;
 }
 
 .total{
@@ -165,6 +125,7 @@ background:#141028;
 padding:15px;
 border-radius:10px;
 font-weight:bold;
+color:white;
 }
 
 .verificar{
@@ -175,38 +136,83 @@ width:100%;
 margin-top:15px;
 }
 
-.copyBtn{
-background:#7c3aed;
-margin-top:5px;
-width:100%;
+/* CARGA Y ID */
+#pantallaCarga{
+position:fixed;
+top:0; left:0;
+width:100%; height:100%;
+background:#0b0718;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:9999;
 }
 
-.copyAll{
-background:#22c55e;
-color:black;
+.logoCarga{
+font-size:38px;
+color:#c084fc;
 font-weight:bold;
-width:100%;
+letter-spacing:3px;
+text-shadow:0 0 20px #a855f7;
+}
+
+.barraCarga{
+width:230px;
+height:10px;
+background:#1c1536;
+border-radius:10px;
+margin-top:20px;
+overflow:hidden;
+}
+
+.progresoCarga{
+height:100%;
+width:0;
+background:#7c3aed;
+animation:cargarPagina 3s forwards;
+}
+
+@keyframes cargarPagina{
+0%{width:0}
+100%{width:100%}
+}
+
+.barraID{
+width:200px;
+height:8px;
+background:#1c1536;
+border-radius:10px;
+overflow:hidden;
+margin:auto;
 margin-top:10px;
 }
 
-.uploadBox{
-border:2px dashed #7c3aed;
-border-radius:10px;
-padding:30px;
-text-align:center;
-margin-top:10px;
-cursor:pointer;
+.progresoID{
+height:100%;
+width:0;
+background:#7c3aed;
+animation:cargarID 2s forwards;
+}
+
+@keyframes cargarID{
+0%{width:0}
+100%{width:100%}
 }
 
 .loader{
-font-size:40px;
-animation:buscar 1s infinite;
+border:4px solid #222;
+border-top:4px solid #7c3aed;
+border-radius:50%;
+width:40px;
+height:40px;
+animation:spin 1s linear infinite;
+margin:auto;
 }
 
-@keyframes buscar{
-0%{transform:translateX(-10px)}
-50%{transform:translateX(10px)}
-100%{transform:translateX(-10px)}
+@keyframes spin{
+0%{transform:rotate(0)}
+100%{transform:rotate(360deg)}
 }
 
 .game{
@@ -230,6 +236,7 @@ border-radius:6px;
 .azul{background:#1e3a8a}
 .amarillo{background:#92400e}
 
+/* BOTONES FLOTANTES */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -239,317 +246,263 @@ color:white;
 padding:15px;
 border-radius:50px;
 font-weight:bold;
+box-shadow:0 0 10px rgba(0,0,0,.5);
 cursor:pointer;
+display:none;
 }
 
-.soporteBtn{
+.soporte{
 position:fixed;
 bottom:90px;
 right:20px;
-background:#5865F2;
+background:#7c3aed;
 color:white;
-padding:14px 16px;
+padding:15px;
 border-radius:50px;
 font-weight:bold;
 cursor:pointer;
+animation:flotar 2s infinite alternate;
 }
 
+@keyframes flotar{
+0%{transform:translateY(0)}
+50%{transform:translateY(-5px)}
+100%{transform:translateY(0)}
+}
+
+/* BOTONES COPIAR */
+.copiar{
+background:#1c1536;
+color:white;
+padding:10px 12px;
+border-radius:6px;
+margin:5px;
+cursor:pointer;
+display:inline-block;
+}
+
+.copiarTodos{
+background:#7c3aed;
+color:white;
+padding:12px 15px;
+border-radius:8px;
+cursor:pointer;
+display:block;
+margin:10px auto;
+}
+
+.advertencia{
+color:#fbbf24;
+font-size:12px;
+margin-top:5px;
+text-align:left;
+}
+
+.recargaExitosa{
+display:none;
+text-align:center;
+margin:15px 0;
+color:#22c55e;
+font-weight:bold;
+font-size:18px;
+}
 </style>
 </head>
 
 <body>
 
+<!-- PANTALLA CARGA -->
 <div id="pantallaCarga">
-<h1 class="tituloCarga">Xenox Recargas</h1>
-<div class="barraCarga">
-<div class="progreso"></div>
-</div>
-<p>Cargando tienda...</p>
+<div class="logoCarga">Xenox Recargas</div>
+<div class="barraCarga"><div class="progresoCarga"></div></div>
 </div>
 
 <div class="header">Xenox Recargas</div>
-
 <div class="estado-servicio">
 🟢 Servicio activo | Recargas 24/7 | Tiempo estimado 1-5 minutos
 </div>
 
 <div class="container">
 
+<!-- ID DEL JUGADOR -->
 <div class="card">
 <h2>ID del jugador</h2>
 <input id="playerID" placeholder="Ingresa tu ID">
 <button class="confirm" onclick="confirmarID()">Confirmar</button>
-
 <div id="verificando" style="display:none;text-align:center;margin-top:10px">
-<div class="loader">🔎</div>
 <p>Buscando jugador...</p>
+<div class="barraID"><div class="progresoID"></div></div>
+</div>
+<p id="jugadorOK" style="color:#22c55e;display:none">✔ Jugador encontrado</p>
 </div>
 
-<p id="jugadorOK" style="color:#22c55e;display:none">
-✔ Jugador encontrado
-</p>
-</div>
-
+<!-- DIAMANTES -->
 <div class="card" id="diamantes" style="display:none">
-
 <h2>Selecciona diamantes</h2>
-
 <div class="grid">
-
 <div class="opcion" onclick="selectDiamante(this,'110')">💎110</div>
 <div class="opcion" onclick="selectDiamante(this,'310')">💎310</div>
 <div class="opcion" onclick="selectDiamante(this,'520')">💎520</div>
 <div class="opcion" onclick="selectDiamante(this,'1060')">💎1060</div>
 <div class="opcion" onclick="selectDiamante(this,'2180')">💎2180</div>
 <div class="opcion" onclick="selectDiamante(this,'5600')">💎5600</div>
-
+</div>
 </div>
 
-</div>
-
+<!-- METODO DE PAGO -->
 <div class="card" id="pagos" style="display:none">
-
 <h2>Método de pago</h2>
-
 <div class="metodo" onclick="selectPago(this,'movil')">Pago Móvil</div>
 <div class="metodo" onclick="selectPago(this,'pix')">Pix</div>
-
 </div>
 
+<!-- FORMULARIO PAGO MOVIL -->
 <div class="card" id="formPagoMovil" style="display:none">
-
-<h2>Datos para Pago Móvil</h2>
-
-<p>Banco: <b id="banco">0102 Banco de Venezuela</b></p>
-<button class="copyBtn" onclick="copiar('banco')">Copiar Banco</button>
-
-<p>Teléfono: <b id="telefono">04147604669</b></p>
-<button class="copyBtn" onclick="copiar('telefono')">Copiar Teléfono</button>
-
-<p>Cédula: <b id="cedula">17047936</b></p>
-<button class="copyBtn" onclick="copiar('cedula')">Copiar Cédula</button>
-
-<button class="copyAll" onclick="copiarTodos()">Copiar todos los datos</button>
-
-<h3>Correo para notificación</h3>
-
-<input placeholder="Correo electrónico (Opcional)">
-
-<h3>Número de WhatsApp</h3>
-
-<select>
-<option selected>🇻🇪 +58 Venezuela</option>
-<option>🇧🇷 +55 Brasil</option>
-</select>
-
-<input placeholder="Número de WhatsApp">
-
-<h3>Últimos 6 dígitos referencia</h3>
-
-<input maxlength="6" placeholder="Ej: 123456">
-
-<h3>Captura del comprobante</h3>
-
-<label class="uploadBox">
-📷 Subir captura
-<input type="file" style="display:none">
-</label>
-
-<div class="total">
-💰 Total a pagar: <span id="totalMovil"></span> Bs
+<h2>Pago Móvil</h2>
+<div style="text-align:center;">
+<p>Banco Venezuela 0102 <button class="copiar" onclick="copiar('Banco Venezuela 0102')">Copiar</button></p>
+<p>Teléfono: 04147604669 <button class="copiar" onclick="copiar('04147604669')">Copiar</button></p>
+<p>Cédula: 17047936 <button class="copiar" onclick="copiar('17047936')">Copiar</button></p>
+<button class="copiarTodos" onclick="copiarTodosMovil()">Copiar todos los datos</button>
 </div>
 
+<!-- FORMULARIOS CON ADVERTENCIAS -->
+<input placeholder="Número de WhatsApp (Venezuela)" required>
+<div class="advertencia">⚠️ Ingresar número de WhatsApp</div>
+
+<input placeholder="Correo para notificación (Opcional)">
+<div class="advertencia">ℹ️ El correo ingresado será utilizado exclusivamente para el envío de su comprobante electrónico.</div>
+
+<input placeholder="Últimos 6 dígitos de la referencia" maxlength="6">
+<div class="advertencia">⚠️ Ingresar últimos 6 dígitos de la referencia</div>
+
+<div style="margin:15px 0; text-align:center; border:2px dashed #7c3aed; padding:20px; border-radius:10px;">
+📷 Subir captura del comprobante
+<input type="file">
+<div class="advertencia">⚠️ Subir comprobante y ⚠️ Subir comprobantes falsos o manipulados constituye fraude electrónico</div>
+</div>
+
+<div class="total">💰 Total a pagar: <span id="totalMovil"></span> Bs</div>
 <button class="verificar" onclick="verificarPago()">VERIFICAR PAGO</button>
-
 </div>
 
+<!-- FORMULARIO PIX -->
 <div class="card" id="formPix" style="display:none">
-
 <h2>Pagar con Pix</h2>
-
-<p><b>CPF 092.632.502-78</b></p>
-
-<select>
-<option selected>🇧🇷 +55 Brasil</option>
-<option>🇻🇪 +58 Venezuela</option>
-</select>
-
-<input placeholder="Número de WhatsApp">
-
-<label class="uploadBox">
-📷 Subir comprobante
-<input type="file" style="display:none">
-</label>
-
-<div class="total">
-💰 Total a pagar: $<span id="totalPix"></span>
+<div style="text-align:center;">
+<p>CPF 092.632.502-78 <button class="copiar" onclick="copiar('092.632.502-78')">Copiar</button></p>
 </div>
 
+<input placeholder="Número de WhatsApp (Brasil)" required>
+<div class="advertencia">⚠️ Ingresar número de WhatsApp</div>
+
+<input placeholder="Correo para notificación (Opcional)">
+<div class="advertencia">ℹ️ El correo ingresado será utilizado exclusivamente para el envío de su comprobante electrónico.</div>
+
+<div style="margin:15px 0; text-align:center; border:2px dashed #7c3aed; padding:20px; border-radius:10px;">
+📷 Subir captura del comprobante
+<input type="file">
+<div class="advertencia">⚠️ Subir comprobante y ⚠️ Subir comprobantes falsos o manipulados constituye fraude electrónico</div>
+</div>
+
+<div class="total">💰 Total a pagar: <span id="totalPix"></span> R$</div>
 <button class="verificar" onclick="verificarPago()">VERIFICAR PAGO</button>
-
 </div>
 
+<!-- OTROS JUEGOS -->
 <div class="card">
-
 <h2>Otros juegos</h2>
-
-<div class="game">
-<img src="https://i.pinimg.com/736x/eb/20/30/eb203036af2bf931259d9c2ae254b2cd.jpg" width="35">
-Roblox
-<span class="estado rojo">NO DISPONIBLE</span>
+<div class="game"><img src="https://i.pinimg.com/736x/eb/20/30/eb203036af2bf931259d9c2ae254b2cd.jpg" width="35"> Roblox <span class="estado rojo">NO DISPONIBLE</span></div>
+<div class="game"><img src="https://i.pinimg.com/736x/e8/8f/2d/e88f2d56a2c768eafb0f4c01859e56bc.jpg" width="35"> COD Mobile <span class="estado azul">NO DISPONIBLE</span></div>
+<div class="game"><img src="https://i.pinimg.com/736x/94/76/bb/9476bb2a4d3910f6c63819d27abd24ef.jpg" width="35"> Blood Strike <span class="estado amarillo">NO DISPONIBLE</span></div>
 </div>
 
-<div class="game">
-<img src="https://i.pinimg.com/736x/e8/8f/2d/e88f2d56a2c768eafb0f4c01859e56bc.jpg" width="35">
-COD Mobile
-<span class="estado azul">NO DISPONIBLE</span>
+<!-- RECARGA EXITOSA -->
+<div class="recargaExitosa" id="recargaExitosa">
+🎉 Recarga exitosa, los diamantes ya están disponibles.
 </div>
 
-<div class="game">
-<img src="https://i.pinimg.com/736x/94/76/bb/9476bb2a4d3910f6c63819d27abd24ef.jpg" width="35">
-Blood Strike
-<span class="estado amarillo">NO DISPONIBLE</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="whatsapp" id="whatsappBtn" onclick="enviarWhatsApp()" style="display:none">
-Enviar pedido por WhatsApp
-</div>
-
-<div class="soporteBtn" onclick="window.open('https://wa.me/12268608782')">
-💬 Soporte
-</div>
+<!-- BOTONES FLOTANTES -->
+<div class="whatsapp" id="whatsappBtn" onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</div>
+<div class="soporte" onclick="window.open('https://wa.me/12268608782')">Soporte WhatsApp</div>
 
 <script>
+setTimeout(()=>{document.getElementById("pantallaCarga").style.display="none"},3000)
 
 let diamante=""
 let metodo=""
-let pedidoID=Math.floor(Math.random()*9000)+1000
-
-window.addEventListener("load",function(){
-setTimeout(()=>{
-document.getElementById("pantallaCarga").style.display="none"
-},3000)
-})
+let pedidoID="XR-"+Math.floor(Math.random()*9000+1000)
 
 function confirmarID(){
-
 let id=document.getElementById("playerID").value
-
-if(!/^[0-9]+$/.test(id)){
-alert("El ID solo debe contener números")
-return
-}
-
+if(!/^[0-9]+$/.test(id)){alert("El ID solo debe contener números"); return}
 document.getElementById("verificando").style.display="block"
-
 setTimeout(()=>{
-
 document.getElementById("verificando").style.display="none"
 document.getElementById("jugadorOK").style.display="block"
 document.getElementById("diamantes").style.display="block"
-
 },2000)
-
 }
 
 function selectDiamante(btn,d){
-
 diamante=d
-
-document.querySelectorAll(".opcion")
-.forEach(e=>e.classList.remove("seleccionado"))
-
+document.querySelectorAll(".opcion").forEach(e=>e.classList.remove("seleccionado"))
 btn.classList.add("seleccionado")
-
 document.getElementById("pagos").style.display="block"
-
 actualizarPrecio()
-
 }
 
 function selectPago(btn,m){
-
 metodo=m
-
-document.querySelectorAll(".metodo")
-.forEach(e=>e.classList.remove("seleccionado"))
-
+document.querySelectorAll(".metodo").forEach(e=>e.classList.remove("seleccionado"))
 btn.classList.add("seleccionado")
-
 document.getElementById("formPagoMovil").style.display="none"
 document.getElementById("formPix").style.display="none"
-
-if(m=="movil"){
-document.getElementById("formPagoMovil").style.display="block"
-}
-
-if(m=="pix"){
-document.getElementById("formPix").style.display="block"
-}
-
+if(m=="movil"){document.getElementById("formPagoMovil").style.display="block"}
+if(m=="pix"){document.getElementById("formPix").style.display="block"}
 actualizarPrecio()
-
 }
 
 function actualizarPrecio(){
-
 let preciosMovil={110:650,310:1800,520:2900,1060:5800,2180:11000,5600:28000}
-let preciosPix={110:0.99,310:2.99,520:4.99,1060:9.99,2180:19.99,5600:49.99}
-
-if(metodo=="movil"){
-document.getElementById("totalMovil").innerText=preciosMovil[diamante]
-}
-
-if(metodo=="pix"){
-document.getElementById("totalPix").innerText=preciosPix[diamante]
-}
-
-}
-
-function copiar(id){
-let texto=document.getElementById(id).innerText
-navigator.clipboard.writeText(texto)
-alert("Copiado: "+texto)
-}
-
-function copiarTodos(){
-
-let texto="Banco: 0102  Venezuela\nTelefono: 04147604669\nCedula: 17047936"
-
-navigator.clipboard.writeText(texto)
-
-alert("Datos copiados")
+let preciosPix={110:7,310:17,520:27,1060:50,2180:98,5600:250}
+if(metodo=="movil"){document.getElementById("totalMovil").innerText=preciosMovil[diamante]}
+if(metodo=="pix"){document.getElementById("totalPix").innerText=preciosPix[diamante]}
 }
 
 function verificarPago(){
-
 document.getElementById("whatsappBtn").style.display="block"
-
+localStorage.setItem("recargaExitosa","true")
 }
 
 function enviarWhatsApp(){
-
 let id=document.getElementById("playerID").value
-
 let numero="12268608782"
-
-let mensaje="🎮 XENOX RECARGAS\n\n"
-
-mensaje+="Pedido #"+pedidoID+"\n"
-mensaje+="Juego: Free Fire\n"
-mensaje+="ID Jugador: "+id+"\n"
-mensaje+="Diamantes: "+diamante+"\n"
-mensaje+="Metodo de pago: "+metodo+"\n"
-mensaje+="Estado: Pendiente de verificación"
-
-window.open("https://wa.me/"+numero+"?text="+encodeURIComponent(mensaje))
-
+let mensaje="🎮 *XENOX RECARGAS* %0A%0A"
+mensaje+="📦 Pedido: "+pedidoID+"%0A"
+mensaje+="🎮 Juego: Free Fire%0A"
+mensaje+="🆔 ID Jugador: "+id+"%0A"
+mensaje+="💎 Diamantes: "+diamante+"%0A"
+mensaje+="💳 Metodo de pago: "+metodo+"%0A%0A"
+mensaje+="⏱ Tiempo estimado: 1-5 minutos"
+window.open("https://wa.me/"+numero+"?text="+mensaje)
 }
 
+function copiar(text){
+navigator.clipboard.writeText(text)
+alert("Copiado")
+}
+
+function copiarTodosMovil(){
+navigator.clipboard.writeText("Banco Venezuela 0102\nTeléfono: 04147604669\nCédula: 17047936")
+alert("Todos los datos copiados")
+}
+
+window.onload=function(){
+if(localStorage.getItem("recargaExitosa")=="true"){
+document.getElementById("recargaExitosa").style.display="block"
+}
+}
 </script>
 
 </body>
