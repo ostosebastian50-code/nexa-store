@@ -46,12 +46,19 @@ body{
   display:block;
   width:100%;
   text-align:center;
-  font-size:34px;
+
+  font-size:36px;
   font-weight:bold;
   padding:20px 0;
-  color:#60a5fa !important;
   letter-spacing:2px;
-  text-shadow:0 0 10px #3b82f6, 0 0 20px #1d4ed8;
+
+  color:white !important; /* 🔥 letras blancas */
+
+  text-shadow:
+    0 0 5px #3b82f6,
+    0 0 10px #3b82f6,
+    0 0 20px #2563eb,
+    0 0 35px rgba(37,99,235,0.7);
 }
 
 /* TITULO ID DEL JUGADOR */
@@ -66,11 +73,17 @@ body{
 
 /* TARJETAS */
 .card{
-  background:rgba(0,0,0,0.6);
-  padding:15px;
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  padding:22px;
   margin:15px;
-  border-radius:10px;
+  border-radius:18px;
+
   color:white;
+
+  box-shadow: 0 0 15px rgba(37,99,235,0.3);
+  transition: all 0.3s ease;
 }
 
 /* INPUTS */
@@ -93,7 +106,61 @@ button{
 .container{ max-width:520px; margin:auto; padding:15px; }
 .card{ background:#151126cc; border-radius:14px; padding:20px; margin-top:20px; box-shadow:0 0 15px rgba(124,58,237,0.3); transition:border-color .5s;}
 .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
-.opcion{ background:#1c1536; border:1px solid #7c3aed; border-radius:10px; padding:15px; text-align:center; cursor:pointer; transition:.3s;}
+/* ===== DIAMANTES ===== */
+.opcion{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  cursor:pointer;
+
+  color:#60a5fa;
+
+  transition: all 0.3s ease;
+}
+
+.opcion:hover{
+  transform: scale(1.05);
+  border-color:#60a5fa;
+  box-shadow: 0 0 12px rgba(59,130,246,0.4);
+}
+
+.opcion.seleccionado{
+  border:2px solid #38bdf8;
+  background: rgba(15,23,42,0.95);
+  box-shadow: 0 0 15px #38bdf8;
+}
+
+
+/* ===== MÉTODOS DE PAGO ===== */
+.metodo{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  border-radius:16px;
+  padding:16px;
+  margin-top:10px;
+
+  cursor:pointer;
+  text-align:center;
+
+  color:#60a5fa;
+
+  transition: all 0.3s ease;
+}
+
+.metodo:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(59,130,246,0.4);
+}
+
+.metodo.seleccionado{
+  border:2px solid #38bdf8;
+  background: rgba(15,23,42,0.95);
+  box-shadow: 0 0 15px #38bdf8;
+}
 .opcion:hover{ transform:scale(1.05);}
 .seleccionado{ border:2px solid #22c55e; background:#0f2f1f;}
 button{ padding:12px; border:none; border-radius:10px; cursor:pointer;}
@@ -124,8 +191,52 @@ button{ padding:12px; border:none; border-radius:10px; cursor:pointer;}
 .metodo.seleccionado{ border:2px solid #22c55e; background:#0f2f1f;}
 input,select{ width:100%; padding:12px; margin-top:10px; border:none; border-radius:8px; background:#201942; color:white; font-weight:bold; transition:.2s;}
 input.error{ border:2px solid #f00 !important;}
-.total{ margin-top:15px; background:#141028; padding:15px; border-radius:10px; font-weight:bold; color:white;}
-.verificar{ font-weight:bold; width:100%; margin-top:15px; cursor:pointer; border-radius:10px; padding:12px; border:none; transition:background .3s;}
+.total{
+  margin-top:18px;
+  padding:20px;
+  border-radius:16px;
+
+  background: linear-gradient(145deg, rgba(15,23,42,0.9), rgba(30,58,138,0.35));
+  border: 1px solid #2563eb;
+
+  color:white;
+  font-weight:bold;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  font-size:20px;
+  box-shadow: 0 0 12px rgba(37,99,235,0.3);
+}
+.verificar{
+  width:100%;
+  margin-top:18px;
+  padding:18px;
+
+  border-radius:18px;
+  cursor:pointer;
+
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.35));
+  border: 1px solid #2563eb;
+
+  color:#e5e7eb;
+  font-weight:bold;
+  font-size:17px;
+  letter-spacing:1px;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(37,99,235,0.35);
+}
+
+.verificar:hover{
+  background: linear-gradient(145deg, rgba(10,15,35,1), rgba(59,130,246,0.45));
+  transform: scale(1.05);
+}
+
+.verificar:active{
+  transform: scale(0.97);
+}
 .game{ display:flex; align-items:center; gap:10px; background:#1c1536; padding:10px; border-radius:10px; margin-top:8px;}
 .estado{ margin-left:auto; font-size:12px; padding:4px 8px; border-radius:6px;}
 .rojo{background:#7f1d1d}.azul{background:#1e3a8a}.amarillo{background:#92400e}
@@ -139,15 +250,17 @@ input.error{ border:2px solid #f00 !important;}
 @keyframes shake {0% { transform: translateX(0); }25% { transform: translateX(-5px); }50% { transform: translateX(5px); }75% { transform: translateX(-5px); }100% { transform: translateX(0); }}
 .recargaExitosa{ display:none; text-align:center; margin:15px 0; color:#22c55e; font-weight:bold; font-size:18px;}
 .opcion{
-  background: linear-gradient(145deg, #1a1333, #0c0a1f);
-  border: 2px solid #3b2a6d;
-  border-radius: 16px;
-  padding: 18px;
-  text-align: center;
-  cursor: pointer;
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  cursor:pointer;
+
+  color:#60a5fa;
+
   transition: all 0.3s ease;
-  color: #60a5fa;
-  position: relative;
 }
 
 /* TEXTO DIAMANTES */
@@ -170,10 +283,15 @@ input.error{ border:2px solid #f00 !important;}
   border-color: #60a5fa;
 }
 #cardID{
-  background: linear-gradient(145deg, #0f172a, #0a1f3f);
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
   border-radius: 20px;
-  padding: 20px;
+  padding: 22px;
   margin: 15px;
+
+  box-shadow: 0 0 15px rgba(37,99,235,0.3);
+  transition: all 0.3s ease;
 }
 
 /* titulo */
@@ -205,11 +323,24 @@ input.error{ border:2px solid #f00 !important;}
 
 /* botón diamante */
 .btn-diamante{
-  background: linear-gradient(145deg, #0ea5e9, #2563eb);
-  border: none;
-  padding: 12px 16px;
-  font-size: 18px;
-  cursor: pointer;
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.35));
+  border: 1px solid #2563eb;
+
+  padding:12px 16px;
+  font-size:18px;
+  cursor:pointer;
+
+  color:#e5e7eb;
+
+  transition: all 0.3s ease;
+}
+.btn-diamante:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(59,130,246,0.4);
+}
+
+.btn-diamante:active{
+  transform: scale(0.95);
 }
 
 /* ejemplo */
@@ -249,6 +380,57 @@ input.error{ border:2px solid #f00 !important;}
   opacity: 1;
   transform: translateY(0);
 }
+@keyframes glowTitulo{
+  0%{ text-shadow: 0 0 5px #3b82f6; }
+  50%{ text-shadow: 0 0 25px #60a5fa; }
+  100%{ text-shadow: 0 0 5px #3b82f6; }
+}
+
+#xenox-title{
+  animation: glowTitulo 2s infinite alternate;
+}
+#cardID:hover{
+  box-shadow: 0 0 25px rgba(59,130,246,0.5);
+  transform: scale(1.01);
+}
+.card:hover{
+  box-shadow: 0 0 25px rgba(59,130,246,0.5);
+  transform: scale(1.01);
+}
+/* 🔥 ARREGLAR MÉTODOS DE PAGO */
+.metodo{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25)) !important;
+  border: 1px solid #2563eb !important;
+
+  color:#60a5fa !important;
+}
+
+.metodo.seleccionado{
+  border:2px solid #38bdf8 !important;
+  background: rgba(15,23,42,0.95) !important;
+  box-shadow: 0 0 15px #38bdf8 !important;
+}
+.ultimo-id-box{
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+  color: #93c5fd;
+  font-weight: bold;
+}
+
+.ultimo-id-box button{
+  background: #2563eb;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -263,6 +445,11 @@ input.error{ border:2px solid #f00 !important;}
   </div>
 
   <p class="ejemplo-id">Ejemplo: 6068831320</p>
+  <div class="ultimo-id-box" id="ultimoIDBox" style="display:none;">
+  <span>Último ID:</span>
+  <span id="textoUltimoID"></span>
+  <button onclick="usarUltimoID()">↩</button>
+</div>
 
   <div class="historial-box">🕐 Historial</div>
 
@@ -309,24 +496,26 @@ input.error{ border:2px solid #f00 !important;}
 <div class="card" id="formPagoMovil" style="display:none">
   <h2>Pago Móvil</h2>
 
-  <div class="total">
-    💰 Total a pagar: <span id="totalMovil"></span> Bs
-  </div>
+<div class="total">
+  <span>💰 Total a pagar</span>
+  <span id="totalMovil">0 Bs</span>
+</div>
 
-  <button class="verificar" onclick="verificarPago()">
-    VERIFICAR PAGO
-  </button>
+<button class="verificar" onclick="verificarPago()">
+  ✓ VERIFICAR PAGO
+</button>
 </div>
 
 <div class="card" id="formPix" style="display:none">
   <h2>Pagar con Pix</h2>
 
-  <div class="total">
-    💰 Total a pagar: <span id="totalPix"></span> R$
-  </div>
+<div class="total">
+  <span>💰 Total a pagar</span>
+  <span id="totalPix">0 R$</span>
+</div>
 
   <button class="verificar" onclick="verificarPago()">
-    VERIFICAR PAGO
+     ✓ VERIFICAR PAGO
   </button>
 </div>
 
@@ -476,6 +665,9 @@ function confirmarID(){
   let diamantes = document.getElementById("diamantes");
 
   if(id.trim() === ""){
+    // 🔥 GUARDAR ÚLTIMO ID
+localStorage.setItem("ultimoID", id);
+mostrarUltimoID();
     alert("Ingresa tu ID");
     return;
   }
@@ -504,6 +696,26 @@ function confirmarID(){
 
   }, 2000);
 }
+function mostrarUltimoID(){
+  let ultimo = localStorage.getItem("ultimoID");
+
+  if(ultimo){
+    document.getElementById("ultimoIDBox").style.display = "flex";
+    document.getElementById("textoUltimoID").innerText = ultimo;
+  }
+}
+
+function usarUltimoID(){
+  let ultimo = localStorage.getItem("ultimoID");
+
+  if(ultimo){
+    document.getElementById("playerID").value = ultimo;
+  }
+}
+
+window.addEventListener("load", function(){
+  mostrarUltimoID();
+});
 
 function selectDiamante(btn,d){
   diamante=d;
@@ -528,10 +740,23 @@ function selectPago(btn,m){
 
 function actualizarPrecio(){
   if(!diamante || !metodo) return;
-  document.getElementById("totalMovil").innerText=juegos[juegoActivo].diamantes[diamante]||"0";
-  document.getElementById("totalPix").innerText=juegos[juegoActivo].pix[diamante]||"0";
-  let btn=document.querySelector("#formPagoMovil .verificar") || document.querySelector("#formPix .verificar");
-  if(btn) btn.style.background=juegos[juegoActivo].color;
+
+  let totalMovil = document.getElementById("totalMovil");
+  let totalPix = document.getElementById("totalPix");
+
+  // 💰 Precio en Pago Móvil (Bs)
+  if(totalMovil){
+    totalMovil.innerText =
+      (juegos[juegoActivo].diamantes[diamante] || "0") + " Bs";
+  }
+
+  // 💰 Precio en Pix (R$)
+  if(totalPix){
+    totalPix.innerText =
+      (juegos[juegoActivo].pix[diamante] || "0") + " R$";
+  }
+
+  // 🚫 IMPORTANTE: ya NO cambiamos el color del botón
 }
 
 function verificarPago(){
