@@ -304,10 +304,12 @@ input.error{ border:2px solid #f00 !important;}
 .input-contenedor{
   display: flex;
   align-items: center;
-  border: 2px solid #60a5fa;
+  border: 2px solid #2563eb; /* azul suave/púrpura */
   border-radius: 14px;
   background: #1e293b;
+  padding: 0 12px;
   overflow: hidden;
+  justify-content: space-between;
 }
 
 /* input */
@@ -352,14 +354,19 @@ input.error{ border:2px solid #f00 !important;}
 }
 
 /* historial */
-.historial-box{
+.historial-box {
   margin-top: 15px;
-  border: 2px solid #60a5fa;
+  border: 2px solid rgba(59,130,246,0.4); /* azul transparente igual que el input */
   border-radius: 14px;
   padding: 12px;
   text-align: center;
   color: #60a5fa;
   font-size: 16px;
+  transition: border-color 0.3s; /* para que tenga animación al pasar el mouse */
+}
+
+.historial-box:hover {
+  border-color: rgba(59,130,246,0.8); /* azul más intenso al pasar el mouse */
 }
 @keyframes rotar{
   0%{transform:rotate(0deg);}
@@ -431,51 +438,338 @@ input.error{ border:2px solid #f00 !important;}
   color: white;
   cursor: pointer;
 }
+body{
+  transition: opacity 0.2s ease;
+}
+
+body.fade{
+  opacity: 0.4;
+}
+.input-contenedor {
+  display: flex;
+  align-items: center;
+  border: 2px solid rgba(59,130,246,0.4); /* azul transparente por defecto */
+  border-radius: 14px;
+  background: #1e293b;
+  overflow: hidden;
+  padding: 0 8px;
+  transition: border-color 0.3s;
+}
+
+.input-contenedor:hover {
+  border-color: rgba(59,130,246,0.8); /* azul más intenso al pasar el mouse */
+}
+
+#playerID{
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e5e7eb;
+  font-size: 16px;
+  padding: 12px 0;
+}
+/* 🔴 TEMA EXACTO BLOOD STRIKE */
+.blood-theme .card {
+  background: #140d0d !important; /* Fondo ultra oscuro */
+  border: 1px solid #3d1414 !important; /* Borde rojo muy oscuro */
+  box-shadow: none !important;
+}
+
+.blood-theme .opcion {
+  background: #1a1212 !important; /* Relleno de la tarjeta de oro */
+  border: 1px solid #4a1a1a !important; /* Borde sutil */
+  border-radius: 12px !important;
+}
+
+/* Títulos y etiquetas en rojo */
+.blood-theme h2, .blood-theme .titulo-id {
+  color: #ff3c3c !important;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+/* Estilo de los Diamantes/Oro */
+.blood-theme .opcion .diamantes {
+  color: #facc15 !important; /* Amarillo oro */
+  font-size: 18px;
+}
+
+.blood-theme .opcion .precio {
+  color: #a1a1a1 !important; /* Gris para el precio Bs */
+  font-size: 13px;
+}
+
+/* Efecto cuando seleccionas una opción */
+.blood-theme .opcion.seleccionado {
+  border: 1.5px solid #ff3c3c !important;
+  background: #251818 !important;
+  box-shadow: 0 0 10px rgba(255, 60, 60, 0.2) !important;
+}
+
+/* El botón de verificar (Lupa o Confirmar) */
+.blood-theme .btn-diamante, .blood-theme .verificar {
+  background: #ff3c3c !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+/* Input de ID */
+.blood-theme .input-contenedor {
+  background: #221717 !important;
+  border: 1px solid #4a1a1a !important;
+}
+/* Estilo especial para Blood Strike (Solo Bordes) */
+.opcion.seleccionado-blood {
+  background: #151126 !important; /* Fondo oscuro interno */
+  position: relative;
+  border: none !important; /* Quitamos el borde normal */
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+/* La animación de las orillas */
+.opcion.seleccionado-blood::before {
+  content: "";
+  position: absolute;
+  /* Grosor del borde mediano */
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  
+  /* Degradado: Amarillo/Naranja arriba, Rojo laterales y abajo */
+  background: linear-gradient(180deg, 
+    #facc15 0%,   /* Amarillo arriba */
+    #f97316 25%,  /* Naranja conectando */
+    #ef4444 50%,  /* Rojo empieza en los lados */
+    #ef4444 100%  /* Rojo abajo */
+  );
+  
+  border-radius: 18px; /* Un poco más que el div para que encaje */
+  z-index: -1;
+  animation: brilloBorde 1.5s infinite alternate;
+}
+
+/* Animación de pulso de brillo en las orillas */
+@keyframes brilloBorde {
+  0% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.4); }
+  100% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.6); }
+}
+/* Botones de Pedido Directo */
+.btn-whatsapp, .btn-messenger {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-size: 13px; /* Tamaño compacto */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Mayúsculas técnicas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: white;
+}
+
+.btn-whatsapp {
+    background: linear-gradient(145deg, #25D366, #128C7E);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-messenger {
+    background: linear-gradient(145deg, #00B2FF, #006AFF);
+    box-shadow: 0 4px 15px rgba(0, 106, 255, 0.3);
+}
+
+.btn-whatsapp:hover, .btn-messenger:hover {
+    transform: scale(1.03);
+}
+
+.btn-whatsapp img, .btn-messenger img {
+    width: 20px;
+    height: 20px;
+}
+.opcion.seleccionado-blood {
+    background: #1a0d0d !important;
+    position: relative;
+    border: none !important;
+    z-index: 1;
+    border-radius: 12px;
+}
+.opcion.seleccionado-blood::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    background: linear-gradient(180deg, #facc15 0%, #f97316 25%, #ef4444 45%, #ef4444 100%);
+    border-radius: 14px;
+    z-index: -1;
+}
+/* Un resplandor que funciona con cualquier fondo */
+.flash-id {
+  animation: flashAnim 0.6s ease-out;
+}
+
+@keyframes flashAnim {
+  0% { 
+    background-color: rgba(255, 255, 255, 0.4); 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  100% { 
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+.soporte-nuevo {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 8px; /* Menos padding a la izquierda porque el icono es redondo */
+  
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  animation: flotar 3s infinite ease-in-out;
+}
+
+.soporte-nuevo img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.soporte-nuevo span {
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.soporte-nuevo:hover {
+  transform: scale(1.05) translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #25D366; /* Brillo verde sutil al pasar el mouse */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Ajuste de la animación para que sea más suave */
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+/* --- AJUSTES DINÁMICOS PARA BLOOD STRIKE --- */
+
+/* Cambia el color del borde y texto de los métodos de pago */
+.blood-theme .metodo {
+    border-color: #4a1a1a !important;
+    color: #ff3c3c !important;
+}
+
+/* Cambia el estilo del método seleccionado en rojo */
+.blood-theme .metodo.seleccionado {
+    border: 2px solid #ff3c3c !important;
+    background: #251818 !important;
+    box-shadow: 0 0 15px rgba(255, 60, 60, 0.4) !important;
+    color: white !important;
+}
+
+/* Cambia el cuadro de "Total a Pagar" */
+.blood-theme .total {
+    background: linear-gradient(145deg, #1a0d0d, #251818) !important;
+    border: 1px solid #ff3c3c !important;
+    box-shadow: 0 0 12px rgba(255, 60, 60, 0.2) !important;
+}
+
+/* El texto del monto total */
+.blood-theme .total span#totalMovil, 
+.blood-theme .total span#totalPix {
+    color: #ff3c3c !important;
+}
+/* --- SECCIÓN OTROS JUEGOS EN MODO BLOOD STRIKE --- */
+
+/* Cambia el contenedor de cada juego */
+.blood-theme .game {
+    background: #1a1212 !important; /* Fondo oscuro rojizo */
+    border: 1px solid #3d1414 !important;
+}
+
+/* Cambia las etiquetas de estado (Disponible/No Disponible) */
+.blood-theme .estado.rojo {
+    background: #ff3c3c !important; /* Rojo brillante para resaltar */
+    color: white !important;
+}
+
+.blood-theme .estado.amarillo {
+    background: #4a1a1a !important; /* Un naranja/rojo oscuro para el "Disponible" de FF */
+    color: #ff3c3c !important;
+    border: 1px solid #ff3c3c;
+}
+
+/* El título de la tarjeta "Otros juegos" */
+.blood-theme .card h2 {
+    color: #ff3c3c !important;
+}
+
 </style>
 </head>
 <body>
 <div id="xenox-title">Xenox Recargas</div>
 <div class="card" id="cardID">
-
-  <h2 class="titulo-id"> ID del Jugador</h2>
-
-  <div class="input-contenedor">
-    <input id="playerID" placeholder="Ingresa tu ID">
-    <button class="btn-diamante" onclick="confirmarID()">💎</button>
+  <div id="etiquetaID" style="text-align: center; color: #60a5fa; font-size: 13px; font-weight: bold; letter-spacing: 1px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+    ⚔️ <span style="text-transform: uppercase;">ID DEL JUGADOR</span> ⚔️
   </div>
 
-  <p class="ejemplo-id">Ejemplo: 6068831320</p>
-  <div class="ultimo-id-box" id="ultimoIDBox" style="display:none;">
-  <span>Último ID:</span>
-  <span id="textoUltimoID"></span>
-  <button onclick="usarUltimoID()">↩</button>
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <div id="inputContenedorEspecial" class="input-contenedor" style="flex: 1; height: 44px; display: flex; align-items: center; border: 1px solid #2563eb;">
+      <input id="playerID" placeholder="Ingresa tu ID" style="height: 100%; font-size:16px; padding:0 12px; background: transparent; color: white; border: none; width: 100%; outline: none;">
+    </div>
+    <button id="btnLupaEspecial" class="btn-diamante" onclick="confirmarID()" style="flex-shrink: 0; height: 44px; width: 50px; background: #2563eb; border-radius: 10px; display: flex; justify-content: center; align-items: center; border:none;">
+      <span style="font-size: 20px;">🔍</span>
+    </button>
+  </div>
+
+  <div id="ultimoIDBox" style="display:none; margin-top: 15px; padding: 12px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid #2563eb; justify-content: center; align-items: center; gap: 10px;">
+    <span style="font-size: 12px; color: #aaa;">Último ID: <b id="textoUltimoID" style="color: #60a5fa; font-size: 14px;"></b></span>
+    <button id="btnFlechaEspecial" onclick="usarUltimoID()" style="background: #2563eb; border: none; color: white; padding: 4px 8px; border-radius: 5px; cursor: pointer;">↵</button>
+  </div>
+
+  <div id="historialBtn" class="historial-box" style="margin-top:15px; border: 2px solid #2563eb; color:#60a5fa;">🕐 Historial</div>
 </div>
 
-  <div class="historial-box">🕐 Historial</div>
-
-</div>
 <!-- 🔥 ANIMACIÓN VERIFICANDO -->
-<div id="verificando" style="display:none; text-align:center; margin-top:10px;">
+<div id="verificando" style="display:none; text-align:center; margin-top:15px; width: 100%;">
+  <div id="boxCargaGeneral" style="background: rgba(15, 23, 42, 0.9); padding: 15px; border-radius:12px; border: 1px solid #2563eb; width:85%; margin:auto;">
 
-  <div style="background:#0f172a; padding:12px; border-radius:10px; width:80%; margin:auto;">
-
-    <div style="position:relative; width:60px; height:60px; margin:auto;">
-      <div style="font-size:28px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
-        💎
-      </div>
-
-      <div style="width:60px; height:60px; border:2px dashed #93c5fd; border-radius:50%; animation:rotar 1s linear infinite;"></div>
+    <div style="position:relative; width:70px; height:70px; margin:auto;">
+      <div id="emojiVerificacion" style="font-size:32px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">💎</div>
+      <div id="circuloGiratorio" style="width:70px; height:70px; border:3px dashed #93c5fd; border-radius:50%; animation:rotar 1s linear infinite;"></div>
     </div>
 
-    <p style="font-size:12px; margin-top:6px;">Verificando ID</p>
+    <p id="textoVerificacion" style="color: #93c5fd; font-size:11px; font-weight:bold; margin-top: 12px; text-transform: uppercase; letter-spacing: 2px; font-family: sans-serif;">
+      VERIFICANDO ID
+    </p>
 
-    <div style="width:70%; height:4px; background:#1e293b; border-radius:10px; margin:8px auto; overflow:hidden;">
-      <div style="width:100%; height:100%; background:#93c5fd; animation:cargando 1.2s infinite;"></div>
+    <div id="contenedorBarra" style="width:70%; height:4px; background:#1e293b; border-radius:10px; margin:10px auto; overflow:hidden;">
+      <div id="barraProgreso" style="width:100%; height:100%; background:#93c5fd; animation:cargando 1.2s infinite;"></div>
     </div>
-
   </div>
-
 </div>
+
+
+
 
 <!-- 🔥 TIENDA DE DIAMANTES -->
 <div id="tiendaDiamantes" style="display:none; text-align:center; margin-top:15px;">
@@ -492,32 +786,109 @@ input.error{ border:2px solid #f00 !important;}
 <div class="metodo" onclick="selectPago(this,'movil')">Pago Móvil</div>
 <div class="metodo" onclick="selectPago(this,'pix')">Pix</div>
 </div>
+<div class="card" id="formPagoMovil" style="display:none; border: 1px solid #0084ff; transition: all 0.3s ease;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <span style="font-size: 18px;">💳</span>
+        <h2 style="color: white; margin: 0; font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">PAGO MÓVIL</h2>
+    </div>
 
-<div class="card" id="formPagoMovil" style="display:none">
-  <h2>Pago Móvil</h2>
+    <div id="contenedorDatosPM" style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); position: relative;">
+        
+        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1);">
+            <span style="font-size: 20px;">📱</span>
+            <span style="color: white; font-weight: bold; font-size: 13px; text-transform: uppercase;">PAGO MÓVIL VENEZUELA</span>
+        </div>
 
-<div class="total">
-  <span>💰 Total a pagar</span>
-  <span id="totalMovil">0 Bs</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative;">
+            <div>
+                <label style="color: #888; font-size: 10px; display: block; text-transform: uppercase;">Banco</label>
+                <span style="font-weight: bold; font-size: 15px; color: white;">Venezuela (0102)</span>
+            </div>
+            <button onclick="copiarConAnimacion('Venezuela (0102)', this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div>
+                <label style="color: #888; font-size: 10px; display: block; text-transform: uppercase;">Teléfono</label>
+                <span style="font-weight: bold; font-size: 15px; color: white;">04147604669</span>
+            </div>
+            <button onclick="copiarConAnimacion('04147604669', this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div>
+                <label style="color: #888; font-size: 10px; display: block; text-transform: uppercase;">Cédula</label>
+                <span style="font-weight: bold; font-size: 15px; color: white;">V17047936</span>
+            </div>
+            <button onclick="copiarConAnimacion('V17047936', this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <label style="color: #888; font-size: 10px; display: block; text-transform: uppercase;">Monto</label>
+                <span id="totalMovil" style="color: #00ff88; font-weight: bold; font-size: 18px;">0 Bs</span>
+            </div>
+            <button onclick="copiarConAnimacion(document.getElementById('totalMovil').innerText, this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <button id="btnCopiarTodo" onclick="copiarTodoPM(this)" style="width: 100%; background: rgba(0, 132, 255, 0.15); color: white; padding: 15px; border-radius: 20px; border: 1px solid #0084ff; font-weight: bold; margin: 20px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; text-transform: uppercase; font-size: 12px; position: relative;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        Copiar todos los datos
+    </button>
+
+    <button class="btn-whatsapp" onclick="enviarWhatsApp()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> ENVIAR PEDIDO POR WHATSAPP
+    </button>
+    <button class="btn-messenger" onclick="enviarMessenger()" style="margin-top: 10px;">
+        <img src="https://i.pinimg.com/736x/75/ad/d5/75add524316e3b5c11dc2082ee4c9f55.jpg"> ENVIAR PEDIDO POR MESSENGER
+    </button>
 </div>
 
-<button class="verificar" onclick="verificarPago()">
-  ✓ VERIFICAR PAGO
-</button>
+
+
+
+
+
+
+<div class="card" id="formPix" style="display:none; border: 1px solid #00d4ff; transition: all 0.3s ease; max-width: 400px; margin: 10px auto;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+        <span style="font-size: 18px;">💠</span>
+        <h2 style="color: white; margin: 0; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">PAGO VÍA PIX</h2>
+    </div>
+
+    <div id="contenedorPix" style="background: rgba(0, 212, 255, 0.1); padding: 15px; border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.2); position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <label style="color: #aaa; font-size: 9px; display: block; text-transform: uppercase; margin-bottom: 4px;">CPF A PAGAR</label>
+                <span style="font-weight: bold; font-size: 16px; color: white; letter-spacing: 0.5px;">092.632.502-78</span>
+            </div>
+            
+            <button onclick="copiarConAnimacion('092.632.502-78', this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn-whatsapp" onclick="enviarWhatsApp()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> ENVIAR PEDIDO POR WHATSAPP
+        </button>
+        
+        <button class="btn-messenger" onclick="enviarMessenger()">
+            <img src="https://i.pinimg.com/736x/75/ad/d5/75add524316e3b5c11dc2082ee4c9f55.jpg"> ENVIAR PEDIDO POR MESSENGER
+        </button>
+    </div>
 </div>
 
-<div class="card" id="formPix" style="display:none">
-  <h2>Pagar con Pix</h2>
-
-<div class="total">
-  <span>💰 Total a pagar</span>
-  <span id="totalPix">0 R$</span>
-</div>
-
-  <button class="verificar" onclick="verificarPago()">
-     ✓ VERIFICAR PAGO
-  </button>
-</div>
 
 <div class="card">
 <h2>Otros juegos</h2>
@@ -536,7 +907,11 @@ input.error{ border:2px solid #f00 !important;}
   <div class="whatsapp" style="background:#0084ff;" onclick="enviarMessenger()">Messenger</div>
 
 </div>
-<div class="soporte" id="soporteBtn" onclick="window.open('https://wa.me/12268608782')">Soporte WhatsApp</div>
+<div class="soporte-nuevo" id="soporteBtn" onclick="window.open('https://wa.me/12268608782')">
+  <img src="https://i.pinimg.com/736x/58/b8/25/58b825f5da9b9b496dc237436c0848b5.jpg" alt="WhatsApp">
+  <span>Soporte Técnico</span>
+</div>
+
 
 <script>
 let juegoActivo="freefire";
@@ -570,148 +945,299 @@ const juegos = {
   },
   monedas:["110","220","341","572","1166","1738","2398","6160"]
 },
-  bloodstrike: {nombre:"Blood Strike", color:"#7f1d1d", fondo:"https://i.pinimg.com/736x/eb/d5/8c/ebd58ca5d023d636cf7dbd174b011583.jpg", diamantes:{100:574,500:2728,1000:5342,2000:10457,5000:25914}, pix:{100:2,500:10,1000:20,2000:40,5000:100}, monedas:["100","500","1000","2000","5000"]}
+  bloodstrike: {
+    nombre: "Blood Strike",
+    color: "#7f1d1d",
+    fondo: "https://i.pinimg.com/736x/30/f7/81/30f781399c61d78573425c28a2e8f583.jpg",
+    diamantes: {
+      105: 586,
+      320: 1743,
+      540: 2881,
+      1100: 5692,
+      2260: 11384,
+      5800: 27878
+    },
+    pix: {
+      105: 2,
+      320: 6,
+      540: 10,
+      1100: 20,
+      2260: 40,
+      5800: 100
+    },
+    monedas: ["105", "320", "540", "1100", "2260", "5800"]
+  }
 }
 
-function cargarDiamantes(){
-  let grid = document.getElementById("gridDiamante");
-  grid.innerHTML = "";
 
-  juegos[juegoActivo].monedas.forEach(d => {
-    let div = document.createElement("div");
-    div.className = "opcion";
+function cargarDiamantes() {
+    let grid = document.getElementById("gridDiamante");
+    if (!grid) return;
+    grid.innerHTML = "";
 
-    // 🔥 detectar método de pago
-    let precio = (metodo === "pix")
-      ? juegos[juegoActivo].pix[d]
-      : juegos[juegoActivo].diamantes[d];
+    const esBS = (juegoActivo === "bloodstrike");
+    const simbolo = (metodo === "pix") ? "R$" : "Bs";
+    const listaPrecios = (metodo === "pix") ? juegos[juegoActivo].pix : juegos[juegoActivo].diamantes;
 
-    let moneda = (metodo === "pix") ? "R$" : "Bs";
+    juegos[juegoActivo].monedas.forEach(cant => {
+        let div = document.createElement("div");
+        div.className = "opcion";
+        
+        // --- AQUÍ LA MAGIA: Si esta cantidad era la que estaba seleccionada, ponle la clase de nuevo ---
+        if (diamante === cant) {
+            div.classList.add(esBS ? "seleccionado-blood" : "seleccionado");
+        }
 
-    div.innerHTML = `
-      <div class="diamantes">💎 ${d}</div>
-      <div class="precio">${precio} ${moneda}</div>
-    `;
+        let precioMostrado = listaPrecios[cant] || "0";
 
-    div.onclick = () => selectDiamante(div, d);
+        if (esBS) {
+            div.innerHTML = `
+                <div style="pointer-events:none; display:flex; flex-direction:column; align-items:center;">
+                    <div style="color:#facc15; font-size:18px; font-weight:bold; display:flex; align-items:center; gap:5px;">
+                        <span style="font-size:16px;">🪙</span> ${cant}
+                    </div>
+                    <div style="color:#888; font-size:13px; margin-top:3px;">${precioMostrado} ${simbolo}</div>
+                </div>
+            `;
+        } else {
+            div.innerHTML = `
+                <div class="diamantes">💎 ${cant}</div>
+                <div class="precio">${precioMostrado} ${simbolo}</div>
+            `;
+        }
 
-    grid.appendChild(div);
-  });
+        div.onclick = () => {
+            diamante = cant; // Guardamos la cantidad seleccionada en la variable global
+            
+            document.querySelectorAll(".opcion").forEach(el => {
+                el.classList.remove("seleccionado", "seleccionado-blood");
+            });
+
+            if (esBS) {
+                div.classList.add("seleccionado-blood");
+            } else {
+                div.classList.add("seleccionado");
+            }
+
+            document.getElementById("pagos").style.display = "block";
+            actualizarPrecio();
+        };
+
+        grid.appendChild(div);
+    });
+}
+function copiarConAnimacion(texto, elemento) {
+    navigator.clipboard.writeText(texto);
+    
+    // Crear el aviso de "Copiado"
+    const aviso = document.createElement("div");
+    aviso.innerHTML = "✔️ COPIADO";
+    aviso.style.position = "absolute";
+    aviso.style.top = "-25px";
+    aviso.style.left = "50%";
+    aviso.style.transform = "translateX(-50%)";
+    aviso.style.color = "#22c55e"; // Color verde éxito
+    aviso.style.fontSize = "10px";
+    aviso.style.fontWeight = "bold";
+    aviso.style.whiteSpace = "nowrap";
+    aviso.style.animation = "shake 0.3s ease";
+    
+    elemento.style.position = "relative";
+    elemento.appendChild(aviso);
+    
+    setTimeout(() => aviso.remove(), 1000);
 }
 
-function resetJuego(){
-  document.getElementById("playerID").value="";
-  diamante=""; metodo="";
-  document.querySelectorAll(".opcion").forEach(e=>e.classList.remove("seleccionado"));
-  document.querySelectorAll(".metodo").forEach(e=>e.classList.remove("seleccionado"));
-  document.getElementById("pagos").style.display="none";
-  document.getElementById("formPagoMovil").style.display="none";
-  document.getElementById("formPix").style.display="none";
-  document.getElementById("totalMovil").innerText="";
-  document.getElementById("totalPix").innerText="";
-  document.getElementById("jugadorOK").style.display="none";
+function copiarTodoPM(btn) {
+    const texto = `PAGO MÓVIL VENEZUELA\nBANCO: Venezuela (0102)\nTELÉFONO: 04147604669\nCÉDULA: V17047936\nMONTO: ${document.getElementById('totalMovil').innerText}`;
+    copiarConAnimacion(texto, btn);
 }
 
-function cambiarJuego(juego){
+// Actualiza tu función cambiarJuego(juego)
+function cambiarJuego(juego) {
+    // ... resto de tu código ...
+    const esBS = (juego === "bloodstrike");
+    const cardPM = document.getElementById("formPagoMovil");
+    const btnCopiar = document.getElementById("btnCopiarTodo");
+    const contenedorDatos = document.getElementById("contenedorDatosPM");
 
-  // 1. Ocultar visualmente TODO primero (evita el flash)
-  document.body.style.pointerEvents = "none";
-  document.body.classList.add("fade-out");
+    if (esBS) {
+        cardPM.style.borderColor = "#ff3c3c";
+        btnCopiar.style.background = "rgba(255, 60, 60, 0.15)";
+        btnCopiar.style.borderColor = "#ff3c3c";
+        contenedorDatos.style.background = "rgba(20, 13, 13, 0.6)"; // Fondo BS original
+    } else {
+        cardPM.style.borderColor = "#0084ff";
+        btnCopiar.style.background = "rgba(0, 132, 255, 0.15)";
+        btnCopiar.style.borderColor = "#0084ff";
+        contenedorDatos.style.background = "rgba(0, 0, 0, 0.75)"; // Fondo FF MÁS OSCURO
+    }
+}
+
+
+
+
+
+
+
+// 🔥 Función para reiniciar todo al cambiar de juego
+function resetJuegoCompleto(){
+  // limpiar ID
+  let inputID = document.getElementById("playerID");
+  if(inputID) inputID.value = "";
+
+  // limpiar variables
+  diamante = "";
+  metodo = "";
+
+  // quitar selecciones de diamantes y métodos
+  document.querySelectorAll(".opcion").forEach(e => e.classList.remove("seleccionado"));
+  document.querySelectorAll(".metodo").forEach(e => e.classList.remove("seleccionado"));
+
+  // ocultar secciones
+  if(document.getElementById("diamantes")) document.getElementById("diamantes").style.display = "none";
+  if(document.getElementById("pagos")) document.getElementById("pagos").style.display = "none";
+  if(document.getElementById("formPagoMovil")) document.getElementById("formPagoMovil").style.display = "none";
+  if(document.getElementById("formPix")) document.getElementById("formPix").style.display = "none";
+
+  // reset precios
+  let tm = document.getElementById("totalMovil");
+  let tp = document.getElementById("totalPix");
+
+  if(tm) tm.innerText = "0 Bs";
+  if(tp) tp.innerText = "0 R$";
+}
+
+function cambiarJuego(juego) {
+  document.body.style.opacity = "0.5";
 
   setTimeout(() => {
-
-    // 2. Cambiar datos del juego
     juegoActivo = juego;
+    const esBS = (juego === "bloodstrike");
 
-    document.body.style.background = "url('"+juegos[juego].fondo+"') no-repeat center center fixed";
+    // Fondo
+    document.body.style.background = "url('" + juegos[juego].fondo + "') no-repeat center center fixed";
     document.body.style.backgroundSize = "cover";
+    
+    // ELEMENTOS DE LA ANIMACIÓN
+    const boxCarga = document.getElementById("boxCargaGeneral");
+    const emoji = document.getElementById("emojiVerificacion");
+    const circulo = document.getElementById("circuloGiratorio");
+    const texto = document.getElementById("textoVerificacion");
+    const barra = document.getElementById("barraProgreso");
+    const contBarra = document.getElementById("contenedorBarra");
 
-    const titulo = document.getElementById("tituloJuego");
-    const cardID = document.getElementById("cardID");
-    const btn = document.getElementById("btnConfirmar");
-    const soporte = document.getElementById("soporteBtn");
-
-    if (titulo) titulo.style.color = juegos[juego].color;
-    if (cardID) cardID.style.borderColor = juegos[juego].color;
-    if (btn) btn.style.background = juegos[juego].color;
-    if (soporte) soporte.style.background = juegos[juego].color;
-
-    // 3. Otros juegos (sin parpadeo)
-    const juegoFreeFire = document.getElementById("juegoFreeFire");
-    const juegoBloodStrike = document.getElementById("juegoBloodStrike");
-
-    if (juegoFreeFire) {
-      juegoFreeFire.style.display = (juego === "bloodstrike") ? "flex" : "none";
+    if (esBS) {
+      document.body.classList.add("blood-theme");
+      // ESTILO BLOOD STRIKE (Rojo Militar)
+      boxCarga.style.background = "rgba(20, 13, 13, 0.95)";
+      boxCarga.style.borderColor = "#4a1a1a";
+      emoji.innerText = "⚔️";
+      circulo.style.borderColor = "#ff3c3c";
+      texto.style.color = "#ff3c3c";
+      barra.style.background = "#ff3c3c";
+      contBarra.style.background = "#1a1212";
+    } else {
+      document.body.classList.remove("blood-theme");
+      // ESTILO FREE FIRE (Azul Neón)
+      boxCarga.style.background = "rgba(10, 15, 30, 0.95)";
+      boxCarga.style.borderColor = "#2563eb";
+      emoji.innerText = "💎";
+      circulo.style.borderColor = "#60a5fa";
+      texto.style.color = "#60a5fa";
+      barra.style.background = "#38bdf8";
+      contBarra.style.background = "#1e293b";
     }
 
-    if (juegoBloodStrike) {
-      juegoBloodStrike.style.display = (juego === "freefire") ? "flex" : "none";
+    // APLICAR COLORES A LA CAJA DE ID E HISTORIAL
+    const colorP = esBS ? "#ff3c3c" : "#2563eb";
+    const colorT = esBS ? "#ff3c3c" : "#60a5fa";
+
+    document.getElementById("etiquetaID").style.color = colorT;
+    document.getElementById("inputContenedorEspecial").style.borderColor = esBS ? "#4a1a1a" : "#2563eb";
+    document.getElementById("btnLupaEspecial").style.backgroundColor = colorP;
+    document.getElementById("btnFlechaEspecial").style.backgroundColor = colorP;
+    
+    if(document.getElementById("ultimoIDBox")) {
+        document.getElementById("ultimoIDBox").style.borderColor = colorP;
+        document.getElementById("textoUltimoID").style.color = colorT;
     }
+    
+    const historial = document.getElementById("historialBtn");
+    historial.style.borderColor = colorP;
+    historial.style.color = colorT;
 
-    // 4. Reset y recarga
-    if (typeof resetJuego === "function") resetJuego();
-    if (typeof cargarDiamantes === "function") cargarDiamantes();
+    // Intercambiar botones de juego
+    document.getElementById("juegoFreeFire").style.display = esBS ? "flex" : "none";
+    document.getElementById("juegoBloodStrike").style.display = esBS ? "none" : "flex";
 
-    // 5. Restaurar animación
-    document.body.classList.remove("fade-out");
-    document.body.classList.add("fade-in");
-    document.body.style.pointerEvents = "auto";
-
-  }, 300); // coincide con la transición
-}
-function confirmarID(){
-  let id = document.getElementById("playerID").value;
-  let box = document.getElementById("verificando");
-  let diamantes = document.getElementById("diamantes");
-
-  if(id.trim() === ""){
-    // 🔥 GUARDAR ÚLTIMO ID
-localStorage.setItem("ultimoID", id);
-mostrarUltimoID();
-    alert("Ingresa tu ID");
-    return;
-  }
-
-  // mostrar animación de carga
-  box.style.display = "block";
-
-  setTimeout(function(){
-
-    box.style.display = "none";
-
-    // 🔥 RESETEAR animación primero
-    diamantes.classList.remove("mostrar");
-
-    // mostrar bloque
-    diamantes.style.display = "block";
-    diamantes.classList.add("animar");
-
-    // 🔥 activar animación
-    setTimeout(()=>{
-      diamantes.classList.add("mostrar");
-    }, 50);
-
-    // cargar diamantes
+    resetJuegoCompleto();
+    mostrarUltimoID(); 
     cargarDiamantes();
 
-  }, 2000);
-}
-function mostrarUltimoID(){
-  let ultimo = localStorage.getItem("ultimoID");
-
-  if(ultimo){
-    document.getElementById("ultimoIDBox").style.display = "flex";
-    document.getElementById("textoUltimoID").innerText = ultimo;
-  }
+    document.body.style.opacity = "1";
+  }, 150);
 }
 
-function usarUltimoID(){
-  let ultimo = localStorage.getItem("ultimoID");
 
-  if(ultimo){
-    document.getElementById("playerID").value = ultimo;
-  }
+
+function confirmarID() {
+    let id = document.getElementById("playerID").value;
+    if (id.trim() === "") return alert("Ingresa tu ID");
+
+    // Guardamos el ID en memoria (pero no mostramos el cuadro todavía)
+    localStorage.setItem("ultimoID_" + juegoActivo, id);
+
+    // Mostramos carga y ocultamos el cuadro por si acaso sigue ahí
+    document.getElementById("verificando").style.display = "block";
+    document.getElementById("diamantes").style.display = "none";
+    document.getElementById("ultimoIDBox").style.display = "none"; 
+
+    setTimeout(() => {
+        document.getElementById("verificando").style.display = "none";
+        document.getElementById("diamantes").style.display = "block";
+        document.getElementById("diamantes").classList.add("mostrar");
+        cargarDiamantes();
+    }, 1500);
 }
+
+
+
+function mostrarUltimoID() {
+    // Busca el ID específico del juego actual (ej: ultimoID_bloodstrike)
+    let ultimo = localStorage.getItem("ultimoID_" + juegoActivo);
+    let box = document.getElementById("ultimoIDBox");
+    let texto = document.getElementById("textoUltimoID");
+
+    if (ultimo) {
+        box.style.display = "flex";
+        texto.innerText = ultimo;
+    } else {
+        box.style.display = "none";
+    }
+}
+
+function usarUltimoID() {
+    let ultimo = localStorage.getItem("ultimoID_" + juegoActivo);
+    if (ultimo) {
+        let inputCont = document.getElementById("inputContenedorEspecial");
+        document.getElementById("playerID").value = ultimo;
+
+        // Aplicamos el flash al contenedor para que se vea el borde brillar
+        inputCont.classList.add("flash-id");
+        
+        // Lo quitamos después de medio segundo
+        setTimeout(() => {
+            inputCont.classList.remove("flash-id");
+        }, 600);
+
+        document.getElementById("ultimoIDBox").style.display = "none";
+        confirmarID(); 
+    }
+}
+
+
+
 
 window.addEventListener("load", function(){
   mostrarUltimoID();
@@ -725,18 +1251,32 @@ function selectDiamante(btn,d){
   actualizarPrecio();
 }
 
-function selectPago(btn,m){
-  metodo=m;
+function selectPago(btn, m) {
+    metodo = m;
 
-  document.querySelectorAll(".metodo").forEach(e=>e.classList.remove("seleccionado"));
-  btn.classList.add("seleccionado");
+    document.querySelectorAll(".metodo").forEach(e => e.classList.remove("seleccionado"));
+    btn.classList.add("seleccionado");
 
-  document.getElementById("formPagoMovil").style.display=(m==="movil")?"block":"none";
-  document.getElementById("formPix").style.display=(m==="pix")?"block":"none";
+    // Mostrar el formulario correspondiente
+    document.getElementById("formPagoMovil").style.display = (m === "movil") ? "block" : "none";
+    document.getElementById("formPix").style.display = (m === "pix") ? "block" : "none";
 
-  cargarDiamantes(); // 🔥 ESTA LÍNEA ES LA CLAVE
-  actualizarPrecio();
+    // 🔥 RECARGAR DIAMANTES: Esto cambia los precios de las tarjetas al instante
+    cargarDiamantes(); 
+    actualizarPrecio();
 }
+
+function actualizarPrecio() {
+    if (!diamante || !metodo) return;
+
+    let totalMovil = document.getElementById("totalMovil");
+    let totalPix = document.getElementById("totalPix");
+
+    // Actualizar los totales de abajo
+    if (totalMovil) totalMovil.innerText = (juegos[juegoActivo].diamantes[diamante] || "0") + " Bs";
+    if (totalPix) totalPix.innerText = (juegos[juegoActivo].pix[diamante] || "0") + " R$";
+}
+
 
 function actualizarPrecio(){
   if(!diamante || !metodo) return;
@@ -820,41 +1360,7 @@ body.fade-in{
   transform: scale(1);
 }
 <script>
-function confirmarID(){
-  let id = document.getElementById("playerID");
-  let box = document.getElementById("verificando");
 
-  if(!id){
-    alert("Error: no existe input playerID");
-    return;
-  }
-
-  if(id.value.trim() === ""){
-    alert("Ingresa tu ID");
-    return;
-  }
-
-  // mostrar animación
-  if(box){
-    box.style.display = "block";
-  }
-
-  // simular carga
-  setTimeout(function(){
-
-    if(box){
-      box.style.display = "none";
-    }
-
-    // 🔥 MOSTRAR DIAMANTES
-    let tienda = document.getElementById("tiendaDiamantes");
-    if(tienda){
-      tienda.style.display = "block";
-    }
-
-  }, 2000);
-}
-</script>
 </script>
 </body>
 </html>
