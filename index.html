@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xenox Recargas</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<style>.titulo-id{
+  font-weight: 600;
+  margin-bottom: 15px;
+
+  background: linear-gradient(90deg, #e0f2fe, #ede9fe); /* casi blanco con tono azul/púrpura */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: none;
+}/* ====== ANIMACIÓN DE CARGA ====== */
+
+
+
+
+.barraCarga {
+  width: 200px;
+  height: 10px;
+  background: #201942;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+
+
+
+body{
+  background:#0b0718 url('https://i.pinimg.com/736x/88/c6/5d/88c65dec0305f6bac42b522cb062d241.jpg') no-repeat center center fixed;
+  background-size:cover;
+  font-family:Arial;
+  color:white;
+  margin:0;
+}
+
+/* TITULO PRINCIPAL */
+#xenox-title{
+  display:block;
+  width:100%;
+  text-align:center;
+
+  font-size:36px;
+  font-weight:bold;
+  padding:20px 0;
+  letter-spacing:2px;
+
+  color:white !important; /* 🔥 letras blancas */
+
+  text-shadow:
+    0 0 5px #3b82f6,
+    0 0 10px #3b82f6,
+    0 0 20px #2563eb,
+    0 0 35px rgba(37,99,235,0.7);
+}
+
+/* TITULO ID DEL JUGADOR */
+.titulo-id{
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:15px;
+  color:#60a5fa;
+  text-shadow:0 0 8px #3b82f6, 0 0 15px #1d4ed8;
+}
+
+/* TARJETAS */
+.card{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  padding:22px;
+  margin:15px;
+  border-radius:18px;
+
+  color:white;
+
+  box-shadow: 0 0 15px rgba(37,99,235,0.3);
+  transition: all 0.3s ease;
+}
+
+/* INPUTS */
+input{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border:none;
+  border-radius:5px;
+}
+
+/* BOTONES */
+button{
+  padding:10px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+.estado-servicio{ text-align:center; background:#0f2f1f; color:#22c55e; padding:10px; font-size:14px; border-bottom:1px solid #22c55e; }
+.container{ max-width:520px; margin:auto; padding:15px; }
+.card{ background:#151126cc; border-radius:14px; padding:20px; margin-top:20px; box-shadow:0 0 15px rgba(124,58,237,0.3); transition:border-color .5s;}
+.grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+/* ===== DIAMANTES ===== */
+.opcion{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  cursor:pointer;
+
+  color:#60a5fa;
+
+  transition: all 0.3s ease;
+}
+
+.opcion:hover{
+  transform: scale(1.05);
+  border-color:#60a5fa;
+  box-shadow: 0 0 12px rgba(59,130,246,0.4);
+}
+
+.opcion.seleccionado{
+  border:2px solid #38bdf8;
+  background: rgba(15,23,42,0.95);
+  box-shadow: 0 0 15px #38bdf8;
+}
+
+
+/* ===== MÉTODOS DE PAGO ===== */
+.metodo{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  border-radius:16px;
+  padding:16px;
+  margin-top:10px;
+
+  cursor:pointer;
+  text-align:center;
+
+  color:#60a5fa;
+
+  transition: all 0.3s ease;
+}
+
+.metodo:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(59,130,246,0.4);
+}
+
+.metodo.seleccionado{
+  border:2px solid #38bdf8;
+  background: rgba(15,23,42,0.95);
+  box-shadow: 0 0 15px #38bdf8;
+}
+.opcion:hover{ transform:scale(1.05);}
+.seleccionado{ border:2px solid #22c55e; background:#0f2f1f;}
+button{ padding:12px; border:none; border-radius:10px; cursor:pointer;}
+.confirm{ width:100%; margin-top:10px; color:white; transition:background .5s;}
+.metodo{
+  background: linear-gradient(145deg, #1a1333, #0c0a1f);
+  border: 2px solid #3b2a6d;
+  border-radius: 16px;
+  padding: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  color: #60a5fa;
+}
+
+/* HOVER */
+.metodo:hover{
+  transform: scale(1.05);
+  border-color: #60a5fa;
+}
+
+.metodo.seleccionado{
+  border: 2px solid #38bdf8 !important;
+  background: #0c1a2b !important;
+  box-shadow: 0 0 10px #38bdf8 !important;
+}
+.metodo.seleccionado{ border:2px solid #22c55e; background:#0f2f1f;}
+input,select{ width:100%; padding:12px; margin-top:10px; border:none; border-radius:8px; background:#201942; color:white; font-weight:bold; transition:.2s;}
+input.error{ border:2px solid #f00 !important;}
+.total{
+  margin-top:18px;
+  padding:20px;
+  border-radius:16px;
+
+  background: linear-gradient(145deg, rgba(15,23,42,0.9), rgba(30,58,138,0.35));
+  border: 1px solid #2563eb;
+
+  color:white;
+  font-weight:bold;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  font-size:20px;
+  box-shadow: 0 0 12px rgba(37,99,235,0.3);
+}
+.verificar{
+  width:100%;
+  margin-top:18px;
+  padding:18px;
+
+  border-radius:18px;
+  cursor:pointer;
+
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.35));
+  border: 1px solid #2563eb;
+
+  color:#e5e7eb;
+  font-weight:bold;
+  font-size:17px;
+  letter-spacing:1px;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(37,99,235,0.35);
+}
+
+.verificar:hover{
+  background: linear-gradient(145deg, rgba(10,15,35,1), rgba(59,130,246,0.45));
+  transform: scale(1.05);
+}
+
+.verificar:active{
+  transform: scale(0.97);
+}
+.game{ display:flex; align-items:center; gap:10px; background:#1c1536; padding:10px; border-radius:10px; margin-top:8px;}
+.estado{ margin-left:auto; font-size:12px; padding:4px 8px; border-radius:6px;}
+.rojo{background:#7f1d1d}.azul{background:#1e3a8a}.amarillo{background:#92400e}
+.whatsapp{ position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:15px; border-radius:50px; font-weight:bold; box-shadow:0 0 10px rgba(0,0,0,.5); cursor:pointer; display:none;}
+.soporte{ position:fixed; bottom:90px; right:20px; padding:15px; border-radius:50px; font-weight:bold; cursor:pointer; color:white; animation:flotar 2s infinite alternate; transition: background .5s;}
+@keyframes flotar{0%{transform:translateY(0)}50%{transform:translateY(-5px)}100%{transform:translateY(0)}}
+.copiar{ background:#1c1536; color:white; padding:10px 12px; border-radius:6px; margin:5px; cursor:pointer; display:inline-block;}
+.copiarTodos{ background:#7c3aed; color:white; padding:12px 15px; border-radius:8px; cursor:pointer; display:block; margin:10px auto;}
+.advertencia{ color:#fbbf24; font-size:12px; margin-top:5px; text-align:center;}
+.shake { animation: shake 0.5s;}
+@keyframes shake {0% { transform: translateX(0); }25% { transform: translateX(-5px); }50% { transform: translateX(5px); }75% { transform: translateX(-5px); }100% { transform: translateX(0); }}
+.recargaExitosa{ display:none; text-align:center; margin:15px 0; color:#22c55e; font-weight:bold; font-size:18px;}
+.opcion{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  cursor:pointer;
+
+  color:#60a5fa;
+
+  transition: all 0.3s ease;
+}
+
+/* TEXTO DIAMANTES */
+.opcion .diamantes{
+  font-size: 20px;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+/* PRECIO */
+.opcion .precio{
+  font-size: 14px;
+  color: #cbd5f5;
+  margin-top: 5px;
+}
+
+/* EFECTO HOVER */
+.opcion:hover{
+  transform: scale(1.05);
+  border-color: #60a5fa;
+}
+#cardID{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+
+  border-radius: 20px;
+  padding: 22px;
+  margin: 15px;
+
+  box-shadow: 0 0 15px rgba(37,99,235,0.3);
+  transition: all 0.3s ease;
+}
+
+/* titulo */
+.titulo-id{
+  color: #f97316;
+  margin-bottom: 15px;
+}
+
+/* contenedor input */
+.input-contenedor{
+  display: flex;
+  align-items: center;
+  border: 2px solid #2563eb; /* azul suave/púrpura */
+  border-radius: 14px;
+  background: #1e293b;
+  padding: 0 12px;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+/* input */
+#playerID{
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e5e7eb;
+  padding: 12px;
+  font-size: 16px;
+}
+
+/* botón diamante */
+.btn-diamante{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.35));
+  border: 1px solid #2563eb;
+
+  padding:12px 16px;
+  font-size:18px;
+  cursor:pointer;
+
+  color:#e5e7eb;
+
+  transition: all 0.3s ease;
+}
+.btn-diamante:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(59,130,246,0.4);
+}
+
+.btn-diamante:active{
+  transform: scale(0.95);
+}
+
+/* ejemplo */
+.ejemplo-id{
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+/* historial */
+.historial-box {
+  margin-top: 15px;
+  border: 2px solid rgba(59,130,246,0.4); /* azul transparente igual que el input */
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+  color: #60a5fa;
+  font-size: 16px;
+  transition: border-color 0.3s; /* para que tenga animación al pasar el mouse */
+}
+
+.historial-box:hover {
+  border-color: rgba(59,130,246,0.8); /* azul más intenso al pasar el mouse */
+}
+@keyframes rotar{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+@keyframes cargando{
+  0%{transform:translateX(-100%);}
+  100%{transform:translateX(100%);}
+}
+.animar{
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.animar.mostrar{
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes glowTitulo{
+  0%{ text-shadow: 0 0 5px #3b82f6; }
+  50%{ text-shadow: 0 0 25px #60a5fa; }
+  100%{ text-shadow: 0 0 5px #3b82f6; }
+}
+
+#xenox-title{
+  animation: glowTitulo 2s infinite alternate;
+}
+#cardID:hover{
+  box-shadow: 0 0 25px rgba(59,130,246,0.5);
+  transform: scale(1.01);
+}
+.card:hover{
+  box-shadow: 0 0 25px rgba(59,130,246,0.5);
+  transform: scale(1.01);
+}
+/* 🔥 ARREGLAR MÉTODOS DE PAGO */
+.metodo{
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25)) !important;
+  border: 1px solid #2563eb !important;
+
+  color:#60a5fa !important;
+}
+
+.metodo.seleccionado{
+  border:2px solid #38bdf8 !important;
+  background: rgba(15,23,42,0.95) !important;
+  box-shadow: 0 0 15px #38bdf8 !important;
+}
+.ultimo-id-box{
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
+  border: 1px solid #2563eb;
+  color: #93c5fd;
+  font-weight: bold;
+}
+
+.ultimo-id-box button{
+  background: #2563eb;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+body{
+  transition: opacity 0.2s ease;
+}
+
+body.fade{
+  opacity: 0.4;
+}
+.input-contenedor {
+  display: flex;
+  align-items: center;
+  border: 2px solid rgba(59,130,246,0.4); /* azul transparente por defecto */
+  border-radius: 14px;
+  background: #1e293b;
+  overflow: hidden;
+  padding: 0 8px;
+  transition: border-color 0.3s;
+}
+
+.input-contenedor:hover {
+  border-color: rgba(59,130,246,0.8); /* azul más intenso al pasar el mouse */
+}
+
+#playerID{
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e5e7eb;
+  font-size: 16px;
+  padding: 12px 0;
+}
+/* 🔴 TEMA EXACTO BLOOD STRIKE */
+.blood-theme .card {
+  background: #140d0d !important; /* Fondo ultra oscuro */
+  border: 1px solid #3d1414 !important; /* Borde rojo muy oscuro */
+  box-shadow: none !important;
+}
+
+.blood-theme .opcion {
+  background: #1a1212 !important; /* Relleno de la tarjeta de oro */
+  border: 1px solid #4a1a1a !important; /* Borde sutil */
+  border-radius: 12px !important;
+}
+
+/* Títulos y etiquetas en rojo */
+.blood-theme h2, .blood-theme .titulo-id {
+  color: #ff3c3c !important;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+/* Estilo de los Diamantes/Oro */
+.blood-theme .opcion .diamantes {
+  color: #facc15 !important; /* Amarillo oro */
+  font-size: 18px;
+}
+
+.blood-theme .opcion .precio {
+  color: #a1a1a1 !important; /* Gris para el precio Bs */
+  font-size: 13px;
+}
+
+/* Efecto cuando seleccionas una opción */
+.blood-theme .opcion.seleccionado {
+  border: 1.5px solid #ff3c3c !important;
+  background: #251818 !important;
+  box-shadow: 0 0 10px rgba(255, 60, 60, 0.2) !important;
+}
+
+/* El botón de verificar (Lupa o Confirmar) */
+.blood-theme .btn-diamante, .blood-theme .verificar {
+  background: #ff3c3c !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+/* Input de ID */
+.blood-theme .input-contenedor {
+  background: #221717 !important;
+  border: 1px solid #4a1a1a !important;
+}
+/* Estilo especial para Blood Strike (Solo Bordes) */
+.opcion.seleccionado-blood {
+  background: #151126 !important; /* Fondo oscuro interno */
+  position: relative;
+  border: none !important; /* Quitamos el borde normal */
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+/* La animación de las orillas */
+.opcion.seleccionado-blood::before {
+  content: "";
+  position: absolute;
+  /* Grosor del borde mediano */
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  
+  /* Degradado: Amarillo/Naranja arriba, Rojo laterales y abajo */
+  background: linear-gradient(180deg, 
+    #facc15 0%,   /* Amarillo arriba */
+    #f97316 25%,  /* Naranja conectando */
+    #ef4444 50%,  /* Rojo empieza en los lados */
+    #ef4444 100%  /* Rojo abajo */
+  );
+  
+  border-radius: 18px; /* Un poco más que el div para que encaje */
+  z-index: -1;
+  animation: brilloBorde 1.5s infinite alternate;
+}
+
+/* Animación de pulso de brillo en las orillas */
+@keyframes brilloBorde {
+  0% { box-shadow: 0 0 5px rgba(239, 68, 68, 0.4); }
+  100% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.6); }
+}
+/* Botones de Pedido Directo */
+.btn-whatsapp, .btn-messenger {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-size: 13px; /* Tamaño compacto */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Mayúsculas técnicas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: white;
+}
+
+.btn-whatsapp {
+    background: linear-gradient(145deg, #25D366, #128C7E);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-messenger {
+    background: linear-gradient(145deg, #00B2FF, #006AFF);
+    box-shadow: 0 4px 15px rgba(0, 106, 255, 0.3);
+}
+
+.btn-whatsapp:hover, .btn-messenger:hover {
+    transform: scale(1.03);
+}
+
+.btn-whatsapp img, .btn-messenger img {
+    width: 20px;
+    height: 20px;
+}
+.opcion.seleccionado-blood {
+    background: #1a0d0d !important;
+    position: relative;
+    border: none !important;
+    z-index: 1;
+    border-radius: 12px;
+}
+.opcion.seleccionado-blood::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    background: linear-gradient(180deg, #facc15 0%, #f97316 25%, #ef4444 45%, #ef4444 100%);
+    border-radius: 14px;
+    z-index: -1;
+}
+/* Un resplandor que funciona con cualquier fondo */
+.flash-id {
+  animation: flashAnim 0.6s ease-out;
+}
+
+@keyframes flashAnim {
+  0% { 
+    background-color: rgba(255, 255, 255, 0.4); 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  100% { 
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+.soporte-nuevo {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 8px; /* Menos padding a la izquierda porque el icono es redondo */
+  
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  animation: flotar 3s infinite ease-in-out;
+}
+
+.soporte-nuevo img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.soporte-nuevo span {
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.soporte-nuevo:hover {
+  transform: scale(1.05) translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #25D366; /* Brillo verde sutil al pasar el mouse */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Ajuste de la animación para que sea más suave */
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+/* --- AJUSTES DINÁMICOS PARA BLOOD STRIKE --- */
+
+/* Cambia el color del borde y texto de los métodos de pago */
+.blood-theme .metodo {
+    border-color: #4a1a1a !important;
+    color: #ff3c3c !important;
+}
+
+/* Cambia el estilo del método seleccionado en rojo */
+.blood-theme .metodo.seleccionado {
+    border: 2px solid #ff3c3c !important;
+    background: #251818 !important;
+    box-shadow: 0 0 15px rgba(255, 60, 60, 0.4) !important;
+    color: white !important;
+}
+
+/* Cambia el cuadro de "Total a Pagar" */
+.blood-theme .total {
+    background: linear-gradient(145deg, #1a0d0d, #251818) !important;
+    border: 1px solid #ff3c3c !important;
+    box-shadow: 0 0 12px rgba(255, 60, 60, 0.2) !important;
+}
+
+/* El texto del monto total */
+.blood-theme .total span#totalMovil, 
+.blood-theme .total span#totalPix {
+    color: #ff3c3c !important;
+}
+/* --- SECCIÓN OTROS JUEGOS EN MODO BLOOD STRIKE --- */
+
+/* Cambia el contenedor de cada juego */
+.blood-theme .game {
+    background: #1a1212 !important; /* Fondo oscuro rojizo */
+    border: 1px solid #3d1414 !important;
+}
+
+/* Cambia las etiquetas de estado (Disponible/No Disponible) */
+.blood-theme .estado.rojo {
+    background: #ff3c3c !important; /* Rojo brillante para resaltar */
+    color: white !important;
+}
+
+.blood-theme .estado.amarillo {
+    background: #4a1a1a !important; /* Un naranja/rojo oscuro para el "Disponible" de FF */
+    color: #ff3c3c !important;
+    border: 1px solid #ff3c3c;
+}
+
+/* El título de la tarjeta "Otros juegos" */
+.blood-theme .card h2 {
+    color: #ff3c3c !important;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+</style>
+</head>
+<body>
+<div id="xenox-title">Xenox Recargas</div>
+<div class="card" id="cardID">
+  <div id="etiquetaID" style="text-align: center; color: #60a5fa; font-size: 13px; font-weight: bold; letter-spacing: 1px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+    ⚔️ <span style="text-transform: uppercase;">ID DEL JUGADOR</span> ⚔️
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <div id="inputContenedorEspecial" class="input-contenedor" style="flex: 1; height: 44px; display: flex; align-items: center; border: 1px solid #2563eb;">
+      <input id="playerID" placeholder="Ingresa tu ID" style="height: 100%; font-size:16px; padding:0 12px; background: transparent; color: white; border: none; width: 100%; outline: none;">
+    </div>
+    <button id="btnLupaEspecial" class="btn-diamante" onclick="confirmarID()" style="flex-shrink: 0; height: 44px; width: 50px; background: #2563eb; border-radius: 10px; display: flex; justify-content: center; align-items: center; border:none;">
+      <span style="font-size: 20px;">🔍</span>
+    </button>
+  </div>
+
+  <div id="ultimoIDBox" style="display:none; margin-top: 15px; padding: 12px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid #2563eb; justify-content: center; align-items: center; gap: 10px;">
+    <span style="font-size: 12px; color: #aaa;">Último ID: <b id="textoUltimoID" style="color: #60a5fa; font-size: 14px;"></b></span>
+    <button id="btnFlechaEspecial" onclick="usarUltimoID()" style="background: #2563eb; border: none; color: white; padding: 4px 8px; border-radius: 5px; cursor: pointer;">↵</button>
+  </div>
+
+  <div id="historialBtn" class="historial-box" style="margin-top:15px; border: 2px solid #2563eb; color:#60a5fa;">🕐 Historial</div>
+</div>
+
+<!-- 🔥 ANIMACIÓN VERIFICANDO -->
+<div id="verificando" style="display:none; text-align:center; margin-top:15px; width: 100%;">
+  <div id="boxCargaGeneral" style="background: rgba(15, 23, 42, 0.9); padding: 15px; border-radius:12px; border: 1px solid #2563eb; width:85%; margin:auto;">
+
+    <div style="position:relative; width:70px; height:70px; margin:auto;">
+      <div id="emojiVerificacion" style="font-size:32px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">💎</div>
+      <div id="circuloGiratorio" style="width:70px; height:70px; border:3px dashed #93c5fd; border-radius:50%; animation:rotar 1s linear infinite;"></div>
+    </div>
+
+    <p id="textoVerificacion" style="color: #93c5fd; font-size:11px; font-weight:bold; margin-top: 12px; text-transform: uppercase; letter-spacing: 2px; font-family: sans-serif;">
+      VERIFICANDO ID
+    </p>
+
+    <div id="contenedorBarra" style="width:70%; height:4px; background:#1e293b; border-radius:10px; margin:10px auto; overflow:hidden;">
+      <div id="barraProgreso" style="width:100%; height:100%; background:#93c5fd; animation:cargando 1.2s infinite;"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- 🔥 TIENDA DE DIAMANTES -->
+<div id="tiendaDiamantes" style="display:none; text-align:center; margin-top:15px;">
+  <p style="color:white;">💎 Aquí aparecerán los diamantes</p>
+</div>
+
+<div class="card" id="diamantes" style="display:none">
+<h2 id="tituloDiamante">Selecciona diamantes</h2>
+<div class="grid" id="gridDiamante"></div>
+</div>
+
+<div class="card" id="pagos" style="display:none">
+<h2>Método de pago</h2>
+<div class="metodo" onclick="selectPago(this,'movil')">Pago Móvil</div>
+<div class="metodo" onclick="selectPago(this,'pix')">Pix</div>
+</div>
+<div class="card" id="formPagoMovil" style="display:none; border: 1px solid #0084ff; transition: all 0.3s ease;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <span style="font-size: 18px;">💳</span>
+        <h2 style="color: white; margin: 0; font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">PAGO MÓVIL</h2>
+    </div>
+
+    <div id="contenedorDatosPM" style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); position: relative;">
+        
+        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1);">
+            <span style="font-size: 20px;">📱</span>
+            <span style="color: white; font-weight: bold; font-size: 13px; text-transform: uppercase;">PAGO MÓVIL VENEZUELA</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative;">
+            <div>
+                <label style="color: #888; font-size: 10px; display: block; text-transform: uppercase;">Banco</label>
+                <span style="font-weight: bold; font-size: 15px; color: white;">Venezuela (0102)</span>
+            </div>
+            <button onclick="copiarConAnimacion('Venezuela (0102)', this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div>
+                <label style="color: #888; font-size: 10px; display: block; text-transform: uppercase;">Teléfono</label>
+                <span style="font-weight: bold; font-size: 15px; color: white;">04147604669</span>
+            </div>
+            <button onclick="copiarConAnimacion('04147604669', this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div>
+                <label style="color: #888; font-size: 10px; display: block; text-transform: uppercase;">Cédula</label>
+                <span style="font-weight: bold; font-size: 15px; color: white;">V17047936</span>
+            </div>
+            <button onclick="copiarConAnimacion('V17047936', this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <label style="color: #888; font-size: 10px; display: block; text-transform: uppercase;">Monto</label>
+                <span id="totalMovil" style="color: #00ff88; font-weight: bold; font-size: 18px;">0 Bs</span>
+            </div>
+            <button onclick="copiarConAnimacion(document.getElementById('totalMovil').innerText, this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <button id="btnCopiarTodo" onclick="copiarTodoPM(this)" style="width: 100%; background: rgba(0, 132, 255, 0.15); color: white; padding: 15px; border-radius: 20px; border: 1px solid #0084ff; font-weight: bold; margin: 20px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; text-transform: uppercase; font-size: 12px; position: relative;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        Copiar todos los datos
+    </button>
+
+    <button class="btn-whatsapp" onclick="enviarWhatsApp()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> ENVIAR PEDIDO POR WHATSAPP
+    </button>
+    <button class="btn-messenger" onclick="enviarMessenger()" style="margin-top: 10px;">
+        <img src="https://i.pinimg.com/736x/75/ad/d5/75add524316e3b5c11dc2082ee4c9f55.jpg"> ENVIAR PEDIDO POR MESSENGER
+    </button>
+</div>
+
+
+
+
+
+
+
+<div class="card" id="formPix" style="display:none; border: 1px solid #00d4ff; transition: all 0.3s ease; max-width: 400px; margin: 10px auto;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+        <span style="font-size: 18px;">💠</span>
+        <h2 style="color: white; margin: 0; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">PAGO VÍA PIX</h2>
+    </div>
+
+    <div id="contenedorPix" style="background: rgba(0, 212, 255, 0.1); padding: 15px; border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.2); position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <label style="color: #aaa; font-size: 9px; display: block; text-transform: uppercase; margin-bottom: 4px;">CPF A PAGAR</label>
+                <span style="font-weight: bold; font-size: 16px; color: white; letter-spacing: 0.5px;">092.632.502-78</span>
+            </div>
+            
+            <button onclick="copiarConAnimacion('092.632.502-78', this)" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 8px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+        <button class="btn-whatsapp" onclick="enviarWhatsApp()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> ENVIAR PEDIDO POR WHATSAPP
+        </button>
+        
+        <button class="btn-messenger" onclick="enviarMessenger()">
+            <img src="https://i.pinimg.com/736x/75/ad/d5/75add524316e3b5c11dc2082ee4c9f55.jpg"> ENVIAR PEDIDO POR MESSENGER
+        </button>
+    </div>
+</div>
+
+
+<div class="card">
+<h2>Otros juegos</h2>
+<div class="game" id="juegoFreeFire" style="display:none"><img src="https://i.pinimg.com/736x/e1/44/ed/e144ed7f9dfe3e72f66f2d3ce9c5faff.jpg" width="35"> Free Fire <span class="estado amarillo">DISPONIBLE</span></div>
+<div class="game" id="juegoBloodStrike"><img src="https://i.pinimg.com/736x/94/76/bb/9476bb2a4d3910f6c63819d27abd24ef.jpg" width="35"> Blood Strike <span class="estado rojo">DISPONIBLE</span></div>
+</div>
+
+<div class="recargaExitosa" id="recargaExitosa">
+🎉 Recarga exitosa, los diamantes ya están disponibles.
+</div>
+
+<div id="botonesPedido" style="display:none; position:fixed; bottom:20px; right:20px; display:flex; flex-direction:column; gap:10px;">
+
+  <div class="whatsapp" onclick="enviarWhatsApp()">WhatsApp</div>
+
+  <div class="whatsapp" style="background:#0084ff;" onclick="enviarMessenger()">Messenger</div>
+
+</div>
+<div class="soporte-nuevo" id="soporteBtn" onclick="window.open('https://wa.me/12268608782')">
+  <img src="https://i.pinimg.com/736x/58/b8/25/58b825f5da9b9b496dc237436c0848b5.jpg" alt="WhatsApp">
+  <span>Soporte Técnico</span>
+</div>
+
+
+<script>
+let juegoActivo="freefire";
+let diamante="", metodo="";
+let pedidoID="XR-"+Math.floor(Math.random()*9000+1000);
+
+const juegos = {
+ freefire: {
+  nombre:"Free Fire",
+  color:"#7c3aed",
+  fondo:"https://i.pinimg.com/736x/88/c6/5d/88c65dec0305f6bac42b522cb062d241.jpg",
+  diamantes:{
+    110:660,
+    220:1300,
+    341:1995,
+    572:2999,
+    1166:5550,
+    1738:8549,
+    2398:11300,
+    6160:28800
+  },
+  pix:{
+    110:7,
+    220:14,
+    341:18,
+    572:27,
+    1166:50,
+    1738:77,
+    2398:95,
+    6160:230
+  },
+  monedas:["110","220","341","572","1166","1738","2398","6160"]
+},
+  bloodstrike: {
+    nombre: "Blood Strike",
+    color: "#7f1d1d",
+    fondo: "https://i.pinimg.com/736x/30/f7/81/30f781399c61d78573425c28a2e8f583.jpg",
+    diamantes: {
+      105: 586,
+      320: 1743,
+      540: 2881,
+      1100: 5692,
+      2260: 11384,
+      5800: 27878
+    },
+    pix: {
+      105: 2,
+      320: 6,
+      540: 10,
+      1100: 20,
+      2260: 40,
+      5800: 100
+    },
+    monedas: ["105", "320", "540", "1100", "2260", "5800"]
+  }
+}
+
+
+function cargarDiamantes() {
+    let grid = document.getElementById("gridDiamante");
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    const esBS = (juegoActivo === "bloodstrike");
+    const simbolo = (metodo === "pix") ? "R$" : "Bs";
+    const listaPrecios = (metodo === "pix") ? juegos[juegoActivo].pix : juegos[juegoActivo].diamantes;
+
+    juegos[juegoActivo].monedas.forEach(cant => {
+        let div = document.createElement("div");
+        div.className = "opcion";
+        
+        // --- AQUÍ LA MAGIA: Si esta cantidad era la que estaba seleccionada, ponle la clase de nuevo ---
+        if (diamante === cant) {
+            div.classList.add(esBS ? "seleccionado-blood" : "seleccionado");
+        }
+
+        let precioMostrado = listaPrecios[cant] || "0";
+
+        if (esBS) {
+            div.innerHTML = `
+                <div style="pointer-events:none; display:flex; flex-direction:column; align-items:center;">
+                    <div style="color:#facc15; font-size:18px; font-weight:bold; display:flex; align-items:center; gap:5px;">
+                        <span style="font-size:16px;">🪙</span> ${cant}
+                    </div>
+                    <div style="color:#888; font-size:13px; margin-top:3px;">${precioMostrado} ${simbolo}</div>
+                </div>
+            `;
+        } else {
+            div.innerHTML = `
+                <div class="diamantes">💎 ${cant}</div>
+                <div class="precio">${precioMostrado} ${simbolo}</div>
+            `;
+        }
+
+        div.onclick = () => {
+            diamante = cant; // Guardamos la cantidad seleccionada en la variable global
+            
+            document.querySelectorAll(".opcion").forEach(el => {
+                el.classList.remove("seleccionado", "seleccionado-blood");
+            });
+
+            if (esBS) {
+                div.classList.add("seleccionado-blood");
+            } else {
+                div.classList.add("seleccionado");
+            }
+
+            document.getElementById("pagos").style.display = "block";
+            actualizarPrecio();
+        };
+
+        grid.appendChild(div);
+    });
+}
+function copiarConAnimacion(texto, elemento) {
+    navigator.clipboard.writeText(texto);
+    
+    // Crear el aviso de "Copiado"
+    const aviso = document.createElement("div");
+    aviso.innerHTML = "✔️ COPIADO";
+    aviso.style.position = "absolute";
+    aviso.style.top = "-25px";
+    aviso.style.left = "50%";
+    aviso.style.transform = "translateX(-50%)";
+    aviso.style.color = "#22c55e"; // Color verde éxito
+    aviso.style.fontSize = "10px";
+    aviso.style.fontWeight = "bold";
+    aviso.style.whiteSpace = "nowrap";
+    aviso.style.animation = "shake 0.3s ease";
+    
+    elemento.style.position = "relative";
+    elemento.appendChild(aviso);
+    
+    setTimeout(() => aviso.remove(), 1000);
+}
+
+function copiarTodoPM(btn) {
+    const texto = `PAGO MÓVIL VENEZUELA\nBANCO: Venezuela (0102)\nTELÉFONO: 04147604669\nCÉDULA: V17047936\nMONTO: ${document.getElementById('totalMovil').innerText}`;
+    copiarConAnimacion(texto, btn);
+}
+
+// Actualiza tu función cambiarJuego(juego)
+function cambiarJuego(juego) {
+    // ... resto de tu código ...
+    const esBS = (juego === "bloodstrike");
+    const cardPM = document.getElementById("formPagoMovil");
+    const btnCopiar = document.getElementById("btnCopiarTodo");
+    const contenedorDatos = document.getElementById("contenedorDatosPM");
+
+    if (esBS) {
+        cardPM.style.borderColor = "#ff3c3c";
+        btnCopiar.style.background = "rgba(255, 60, 60, 0.15)";
+        btnCopiar.style.borderColor = "#ff3c3c";
+        contenedorDatos.style.background = "rgba(20, 13, 13, 0.6)"; // Fondo BS original
+    } else {
+        cardPM.style.borderColor = "#0084ff";
+        btnCopiar.style.background = "rgba(0, 132, 255, 0.15)";
+        btnCopiar.style.borderColor = "#0084ff";
+        contenedorDatos.style.background = "rgba(0, 0, 0, 0.75)"; // Fondo FF MÁS OSCURO
+    }
+}
+
+
+
+
+
+
+
+// 🔥 Función para reiniciar todo al cambiar de juego
+function resetJuegoCompleto(){
+  // limpiar ID
+  let inputID = document.getElementById("playerID");
+  if(inputID) inputID.value = "";
+
+  // limpiar variables
+  diamante = "";
+  metodo = "";
+
+  // quitar selecciones de diamantes y métodos
+  document.querySelectorAll(".opcion").forEach(e => e.classList.remove("seleccionado"));
+  document.querySelectorAll(".metodo").forEach(e => e.classList.remove("seleccionado"));
+
+  // ocultar secciones
+  if(document.getElementById("diamantes")) document.getElementById("diamantes").style.display = "none";
+  if(document.getElementById("pagos")) document.getElementById("pagos").style.display = "none";
+  if(document.getElementById("formPagoMovil")) document.getElementById("formPagoMovil").style.display = "none";
+  if(document.getElementById("formPix")) document.getElementById("formPix").style.display = "none";
+
+  // reset precios
+  let tm = document.getElementById("totalMovil");
+  let tp = document.getElementById("totalPix");
+
+  if(tm) tm.innerText = "0 Bs";
+  if(tp) tp.innerText = "0 R$";
+}
+
+function cambiarJuego(juego) {
+  document.body.style.opacity = "0.5";
+
+  setTimeout(() => {
+    juegoActivo = juego;
+    const esBS = (juego === "bloodstrike");
+
+    // Fondo
+    document.body.style.background = "url('" + juegos[juego].fondo + "') no-repeat center center fixed";
+    document.body.style.backgroundSize = "cover";
+    
+    // ELEMENTOS DE LA ANIMACIÓN
+    const boxCarga = document.getElementById("boxCargaGeneral");
+    const emoji = document.getElementById("emojiVerificacion");
+    const circulo = document.getElementById("circuloGiratorio");
+    const texto = document.getElementById("textoVerificacion");
+    const barra = document.getElementById("barraProgreso");
+    const contBarra = document.getElementById("contenedorBarra");
+
+    if (esBS) {
+      document.body.classList.add("blood-theme");
+      // ESTILO BLOOD STRIKE (Rojo Militar)
+      boxCarga.style.background = "rgba(20, 13, 13, 0.95)";
+      boxCarga.style.borderColor = "#4a1a1a";
+      emoji.innerText = "⚔️";
+      circulo.style.borderColor = "#ff3c3c";
+      texto.style.color = "#ff3c3c";
+      barra.style.background = "#ff3c3c";
+      contBarra.style.background = "#1a1212";
+    } else {
+      document.body.classList.remove("blood-theme");
+      // ESTILO FREE FIRE (Azul Neón)
+      boxCarga.style.background = "rgba(10, 15, 30, 0.95)";
+      boxCarga.style.borderColor = "#2563eb";
+      emoji.innerText = "💎";
+      circulo.style.borderColor = "#60a5fa";
+      texto.style.color = "#60a5fa";
+      barra.style.background = "#38bdf8";
+      contBarra.style.background = "#1e293b";
+    }
+
+    // APLICAR COLORES A LA CAJA DE ID E HISTORIAL
+    const colorP = esBS ? "#ff3c3c" : "#2563eb";
+    const colorT = esBS ? "#ff3c3c" : "#60a5fa";
+
+    document.getElementById("etiquetaID").style.color = colorT;
+    document.getElementById("inputContenedorEspecial").style.borderColor = esBS ? "#4a1a1a" : "#2563eb";
+    document.getElementById("btnLupaEspecial").style.backgroundColor = colorP;
+    document.getElementById("btnFlechaEspecial").style.backgroundColor = colorP;
+    
+    if(document.getElementById("ultimoIDBox")) {
+        document.getElementById("ultimoIDBox").style.borderColor = colorP;
+        document.getElementById("textoUltimoID").style.color = colorT;
+    }
+    
+    const historial = document.getElementById("historialBtn");
+    historial.style.borderColor = colorP;
+    historial.style.color = colorT;
+
+    // Intercambiar botones de juego
+    document.getElementById("juegoFreeFire").style.display = esBS ? "flex" : "none";
+    document.getElementById("juegoBloodStrike").style.display = esBS ? "none" : "flex";
+
+    resetJuegoCompleto();
+    mostrarUltimoID(); 
+    cargarDiamantes();
+
+    document.body.style.opacity = "1";
+  }, 150);
+}
+
+
+
+function confirmarID() {
+    let id = document.getElementById("playerID").value;
+    if (id.trim() === "") return alert("Ingresa tu ID");
+
+    // Guardamos el ID en memoria (pero no mostramos el cuadro todavía)
+    localStorage.setItem("ultimoID_" + juegoActivo, id);
+
+    // Mostramos carga y ocultamos el cuadro por si acaso sigue ahí
+    document.getElementById("verificando").style.display = "block";
+    document.getElementById("diamantes").style.display = "none";
+    document.getElementById("ultimoIDBox").style.display = "none"; 
+
+    setTimeout(() => {
+        document.getElementById("verificando").style.display = "none";
+        document.getElementById("diamantes").style.display = "block";
+        document.getElementById("diamantes").classList.add("mostrar");
+        cargarDiamantes();
+    }, 1500);
+}
+
+
+
+function mostrarUltimoID() {
+    // Busca el ID específico del juego actual (ej: ultimoID_bloodstrike)
+    let ultimo = localStorage.getItem("ultimoID_" + juegoActivo);
+    let box = document.getElementById("ultimoIDBox");
+    let texto = document.getElementById("textoUltimoID");
+
+    if (ultimo) {
+        box.style.display = "flex";
+        texto.innerText = ultimo;
+    } else {
+        box.style.display = "none";
+    }
+}
+
+function usarUltimoID() {
+    let ultimo = localStorage.getItem("ultimoID_" + juegoActivo);
+    if (ultimo) {
+        let inputCont = document.getElementById("inputContenedorEspecial");
+        document.getElementById("playerID").value = ultimo;
+
+        // Aplicamos el flash al contenedor para que se vea el borde brillar
+        inputCont.classList.add("flash-id");
+        
+        // Lo quitamos después de medio segundo
+        setTimeout(() => {
+            inputCont.classList.remove("flash-id");
+        }, 600);
+
+        document.getElementById("ultimoIDBox").style.display = "none";
+        confirmarID(); 
+    }
+}
+
+
+
+
+window.addEventListener("load", function(){
+  mostrarUltimoID();
+});
+
+function selectDiamante(btn,d){
+  diamante=d;
+  document.querySelectorAll(".opcion").forEach(e=>e.classList.remove("seleccionado"));
+  btn.classList.add("seleccionado");
+  document.getElementById("pagos").style.display="block";
+  actualizarPrecio();
+}
+
+function selectPago(btn, m) {
+    metodo = m;
+
+    document.querySelectorAll(".metodo").forEach(e => e.classList.remove("seleccionado"));
+    btn.classList.add("seleccionado");
+
+    // Mostrar el formulario correspondiente
+    document.getElementById("formPagoMovil").style.display = (m === "movil") ? "block" : "none";
+    document.getElementById("formPix").style.display = (m === "pix") ? "block" : "none";
+
+    // 🔥 RECARGAR DIAMANTES: Esto cambia los precios de las tarjetas al instante
+    cargarDiamantes(); 
+    actualizarPrecio();
+}
+
+function actualizarPrecio() {
+    if (!diamante || !metodo) return;
+
+    let totalMovil = document.getElementById("totalMovil");
+    let totalPix = document.getElementById("totalPix");
+
+    // Actualizar los totales de abajo
+    if (totalMovil) totalMovil.innerText = (juegos[juegoActivo].diamantes[diamante] || "0") + " Bs";
+    if (totalPix) totalPix.innerText = (juegos[juegoActivo].pix[diamante] || "0") + " R$";
+}
+
+
+function actualizarPrecio(){
+  if(!diamante || !metodo) return;
+
+  let totalMovil = document.getElementById("totalMovil");
+  let totalPix = document.getElementById("totalPix");
+
+  // 💰 Precio en Pago Móvil (Bs)
+  if(totalMovil){
+    totalMovil.innerText =
+      (juegos[juegoActivo].diamantes[diamante] || "0") + " Bs";
+  }
+
+  // 💰 Precio en Pix (R$)
+  if(totalPix){
+    totalPix.innerText =
+      (juegos[juegoActivo].pix[diamante] || "0") + " R$";
+  }
+
+  // 🚫 IMPORTANTE: ya NO cambiamos el color del botón
+}
+
+function verificarPago(){
+  let camposValidos=true;
+  let formFields=(metodo==="movil")?document.querySelectorAll("#formPagoMovil input[required]"):document.querySelectorAll("#formPix input[required]");
+  formFields.forEach(f=>f.classList.remove("error"));
+  formFields.forEach(f=>{if(!f.value){camposValidos=false; f.classList.add("error");}});
+  if(!camposValidos){alert("Faltan campos"); return;}
+document.getElementById("botonesPedido").style.display="flex";
+}
+
+function enviarWhatsApp(){
+  let id=document.getElementById("playerID").value;
+  let numero="12268608782";
+  let mensaje=`🎮 *XENOX RECARGAS* %0A%0A📦 Pedido: ${pedidoID}%0A🎮 Juego: ${juegos[juegoActivo].nombre}%0A🆔 ID Jugador: ${id}%0A💎 Diamantes: ${diamante}%0A💳 Metodo de pago: ${metodo}%0A%0A⏱ Tiempo estimado: 1-5 minutos`;
+  window.open("https://wa.me/"+numero+"?text="+mensaje);
+}
+function enviarMessenger(){
+  let id = document.getElementById("playerID").value;
+
+  let mensaje = `Pedido: ${pedidoID}\nJuego: ${juegos[juegoActivo].nombre}\nID: ${id}\nDiamantes: ${diamante}\nMetodo: ${metodo}`;
+
+  let url = "https://m.me/61572194815355";
+
+  alert("Te abriremos Messenger, copia esto:\n\n" + mensaje);
+
+  window.open(url);
+}
+
+document.getElementById("juegoBloodStrike").onclick=()=>cambiarJuego("bloodstrike");
+document.getElementById("juegoFreeFire").onclick=()=>cambiarJuego("freefire");
+
+// Iniciar Free Fire
+cargarDiamantes();
+document.getElementById("btnConfirmar").style.background=juegos[juegoActivo].color;
+document.getElementById("soporteBtn").style.background=juegos[juegoActivo].color;
+</script><script>
+window.addEventListener("load", function(){
+  const carga = document.getElementById("pantallaCarga");
+
+  setTimeout(function(){
+    carga.style.transition = "opacity 0.5s";
+    carga.style.opacity = "0";
+
+    setTimeout(function(){
+      carga.style.display = "none";
+    },500);
+
+  }, 2000);
+});body{
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+body.fade-out{
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+body.fade-in{
+  opacity: 1;
+  transform: scale(1);
+}
+<!-- update -->
+<script>
+
+</script>
+</body>
+</html>
