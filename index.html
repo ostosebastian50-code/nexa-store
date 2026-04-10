@@ -4,6 +4,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xenox Recargas</title>
 
+<!-- 🔥 PWA CONFIG -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b0718">
+
+<!-- iPhone soporte -->
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<!-- Tu favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xenox Recargas</title>
+
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -1370,6 +1382,12 @@ body.fade-in{
 <!-- update -->
 <script>
 
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js")
+    .then(() => console.log("App lista 🔥"))
+    .catch(err => console.log("Error:", err));
+}
 </script>
 </body>
 </html>
