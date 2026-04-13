@@ -4,18 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xenox Recargas</title>
 
-<!-- 🔥 PWA CONFIG -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0b0718">
-
-<!-- iPhone soporte -->
-<link rel="apple-touch-icon" href="icon-192.png">
-
-<!-- Tu favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xenox Recargas</title>
-
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -119,9 +107,19 @@ button{
 .card{ background:#151126cc; border-radius:14px; padding:20px; margin-top:20px; box-shadow:0 0 15px rgba(124,58,237,0.3); transition:border-color .5s;}
 .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
 /* ===== DIAMANTES ===== */
+/* 🔵 FREE FIRE CUADROS OSCUROS PRO */
 .opcion{
-  background: linear-gradient(145deg, rgba(10,15,35,0.95), rgba(30,64,175,0.25));
-  border: 1px solid #2563eb;
+  background: #0b1220; /* azul oscuro sólido */
+  border: 1px solid #1e3a8a; /* azul profundo */
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  cursor:pointer;
+
+  color:#60a5fa;
+
+  transition: all 0.3s ease;
+}
 
   border-radius:16px;
   padding:18px;
@@ -134,15 +132,70 @@ button{
 }
 
 .opcion:hover{
-  transform: scale(1.05);
-  border-color:#60a5fa;
-  box-shadow: 0 0 12px rgba(59,130,246,0.4);
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(59,130,246,0.6);
+}
+.opcion.seleccionado{
+  border: 2px solid #38bdf8;
+  background: rgba(15,23,42,0.95);
+  box-shadow: 
+    0 0 10px #38bdf8,
+    0 0 20px #38bdf8,
+    0 0 30px rgba(56,189,248,0.5);
+  animation: glowFF 1.5s infinite alternate;
+}
+.card{
+  position: relative;
+  overflow: hidden;
 }
 
-.opcion.seleccionado{
-  border:2px solid #38bdf8;
-  background: rgba(15,23,42,0.95);
-  box-shadow: 0 0 15px #38bdf8;
+
+@keyframes moverLuz{
+  0%{ transform: translate(-50%, -50%); }
+  100%{ transform: translate(0%, 0%); }
+}
+
+@keyframes glowFF{
+  0%{ box-shadow: 0 0 10px #38bdf8; }
+  100%{ box-shadow: 0 0 25px #60a5fa; }
+}
+
+
+/* 💎 FREE FIRE SELECCIONADO PRO */
+.opcion.seleccionado {
+  background: #0f172a !important;
+  position: relative;
+  border: none !important;
+  transform: scale(1.05);
+  z-index: 1;
+  border-radius: 16px;
+}
+.opcion.seleccionado:hover::before {
+  animation: brilloAzul 0.7s infinite alternate;
+}
+
+/* Borde animado */
+.opcion.seleccionado::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+
+  background: linear-gradient(180deg, 
+    #60a5fa 0%,   /* azul claro arriba */
+    #3b82f6 25%,  /* azul medio */
+    #2563eb 50%,  /* azul fuerte */
+    #1d4ed8 100%  /* azul oscuro abajo */
+  );
+
+  border-radius: 18px;
+  z-index: -1;
+  animation: brilloAzul 1.5s infinite alternate;
+}
+
+/* Animación glow */
+@keyframes brilloAzul {
+  0% { box-shadow: 0 0 5px rgba(59,130,246,0.4); }
+  100% { box-shadow: 0 0 18px rgba(96,165,250,0.8); }
 }
 
 
@@ -742,7 +795,44 @@ body.fade{
 .card {
   animation: fadeInUp 0.6s ease-out forwards;
 }
+.recargaExitosa{
+  display:none;
+  text-align:center;
+  margin:15px 0;
+  color:#22c55e;
+  font-weight:bold;
+  font-size:18px;
+  padding:12px;
+  border-radius:12px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid #22c55e;
+  animation: pop 0.4s ease;
+}
 
+@keyframes pop{
+  0%{ transform: scale(0.5); opacity:0; }
+  100%{ transform: scale(1); opacity:1; }
+}
+body{
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+body.fade-out{
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+body.fade-in{
+  opacity: 1;
+  transform: scale(1);
+}
+.recargaExitosa{
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+}
 </style>
 </head>
 <body>
@@ -917,7 +1007,7 @@ body.fade{
 </div>
 
 <div class="recargaExitosa" id="recargaExitosa">
-🎉 Recarga exitosa, los diamantes ya están disponibles.
+🎉 Pedido realizado correctamente
 </div>
 
 <div id="botonesPedido" style="display:none; position:fixed; bottom:20px; right:20px; display:flex; flex-direction:column; gap:10px;">
@@ -1198,6 +1288,16 @@ function cambiarJuego(juego) {
     document.body.style.opacity = "1";
   }, 150);
 }
+function mostrarPedidoYEnviar(callback){
+  let anim = document.getElementById("recargaExitosa");
+
+  anim.style.display = "block";
+
+  setTimeout(() => {
+    anim.style.display = "none";
+    callback(); // aquí abre WhatsApp o Messenger
+  }, 1500);
+}
 
 
 
@@ -1327,23 +1427,110 @@ function verificarPago(){
   if(!camposValidos){alert("Faltan campos"); return;}
 document.getElementById("botonesPedido").style.display="flex";
 }
-
 function enviarWhatsApp(){
-  let id=document.getElementById("playerID").value;
-  let numero="12268608782";
-  let mensaje=`🎮 *XENOX RECARGAS* %0A%0A📦 Pedido: ${pedidoID}%0A🎮 Juego: ${juegos[juegoActivo].nombre}%0A🆔 ID Jugador: ${id}%0A💎 Diamantes: ${diamante}%0A💳 Metodo de pago: ${metodo}%0A%0A⏱ Tiempo estimado: 1-5 minutos`;
-  window.open("https://wa.me/"+numero+"?text="+mensaje);
+  let id = document.getElementById("playerID").value;
+
+  if(!id || !diamante || !metodo){
+    alert("Completa todos los datos antes de enviar el pedido");
+    return;
+  }
+
+  // 💰 precio correcto según método
+  let precioSeleccionado = "";
+  if(metodo === "movil"){
+    precioSeleccionado = (juegos[juegoActivo].diamantes[diamante] || "0") + " Bs";
+  } else {
+    precioSeleccionado = (juegos[juegoActivo].pix[diamante] || "0") + " R$";
+  }
+
+  // 🧾 MENSAJE TIPO FACTURA
+  let mensaje =
+`🧾 FACTURA DE RECARGA
+══════════════════════
+
+🎮 JUEGO: ${juegos[juegoActivo].nombre}
+🆔 ID: ${id}
+
+💎 PRODUCTO: ${diamante}
+💰 PRECIO: ${precioSeleccionado}
+
+💳 MÉTODO DE PAGO: ${metodo.toUpperCase()}
+
+📦 ESTADO: PENDIENTE
+🕒 FECHA: ${new Date().toLocaleDateString()}
+
+══════════════════════
+⚠️ VERIFICA TU ID ANTES DE ENVIAR
+══════════════════════`;
+
+  let numero = "12268608782";
+
+  // 📩 abrir WhatsApp directo con mensaje listo
+  let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+
+  // 🎉 ANIMACIÓN ANTES DE ENVIAR
+  let anim = document.getElementById("recargaExitosa");
+  anim.style.display = "block";
+
+  setTimeout(() => {
+    anim.style.display = "none";
+    window.open(url, "_blank");
+  }, 1200);
 }
+
 function enviarMessenger(){
   let id = document.getElementById("playerID").value;
 
-  let mensaje = `Pedido: ${pedidoID}\nJuego: ${juegos[juegoActivo].nombre}\nID: ${id}\nDiamantes: ${diamante}\nMetodo: ${metodo}`;
+  if(!id || !diamante || !metodo){
+    alert("Completa todos los datos antes de enviar el pedido");
+    return;
+  }
 
-  let url = "https://m.me/61572194815355";
+  // 💰 precio correcto según método
+  let precioSeleccionado = "";
+  if(metodo === "movil"){
+    precioSeleccionado = (juegos[juegoActivo].diamantes[diamante] || "0") + " Bs";
+  } else {
+    precioSeleccionado = (juegos[juegoActivo].pix[diamante] || "0") + " R$";
+  }
 
-  alert("Te abriremos Messenger, copia esto:\n\n" + mensaje);
+  // 🧾 FACTURA PRO
+  let mensaje = 
+`🧾 FACTURA DE RECARGA
+══════════════════════
 
-  window.open(url);
+🎮 JUEGO: ${juegos[juegoActivo].nombre}
+🆔 ID: ${id}
+
+💎 PRODUCTO: ${diamante}
+💰 PRECIO: ${precioSeleccionado}
+
+💳 MÉTODO DE PAGO: ${metodo.toUpperCase()}
+
+📦 ESTADO: PENDIENTE
+🕒 FECHA: ${new Date().toLocaleDateString()}
+
+══════════════════════
+⚠️ VERIFICA TU ID ANTES DE ENVIAR
+══════════════════════`;
+
+  // 📋 COPIAR AUTOMÁTICO
+  navigator.clipboard.writeText(mensaje);
+
+  // 🎉 ANIMACIÓN ANTES DE ENVIAR
+  let anim = document.getElementById("recargaExitosa");
+  anim.style.display = "block";
+
+  setTimeout(() => {
+    anim.style.display = "none";
+
+    // 🔔 aviso
+    alert("📋 FACTURA COPIADA\n\nAhora pégala en Messenger");
+
+    // 🔗 abrir Messenger
+    window.open("https://m.me/61572194815355", "_blank");
+
+  }, 1200);
 }
 
 document.getElementById("juegoBloodStrike").onclick=()=>cambiarJuego("bloodstrike");
@@ -1366,28 +1553,6 @@ window.addEventListener("load", function(){
     },500);
 
   }, 2000);
-});body{
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-body.fade-out{
-  opacity: 0;
-  transform: scale(0.98);
-}
-
-body.fade-in{
-  opacity: 1;
-  transform: scale(1);
-}
-<!-- update -->
-<script>
-
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js")
-    .then(() => console.log("App lista 🔥"))
-    .catch(err => console.log("Error:", err));
-}
 </script>
 </body>
 </html>
