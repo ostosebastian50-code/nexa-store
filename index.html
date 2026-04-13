@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xenox Recargas</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
 
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -833,10 +835,26 @@ body.fade-in{
   transform: translateX(-50%);
   z-index: 99999;
 }
+@keyframes shakeError {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.input-error {
+  border: 2px solid #ef4444 !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.6) !important;
+  animation: shakeError 0.3s ease;
+}
 </style>
 </head>
 <body>
-<div id="xenox-title">Xenox Recargas</div>
+<div id="xenox-title">Nexa Recargas</div>
+
+
+
 <div class="card" id="cardID">
   <div id="etiquetaID" style="text-align: center; color: #60a5fa; font-size: 13px; font-weight: bold; letter-spacing: 1px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
     ⚔️ <span style="text-transform: uppercase;">ID DEL JUGADOR</span> ⚔️
@@ -1298,17 +1316,64 @@ function mostrarPedidoYEnviar(callback){
     callback(); // aquí abre WhatsApp o Messenger
   }, 1500);
 }
+function validarID() {
+  const input = document.getElementById("playerID");
+  const cont = document.getElementById("inputContenedorEspecial");
 
+  let id = input.value.trim();
+
+  // detectar juego
+  let minLength = (juegoActivo === "freefire") ? 8 : 6;
+
+  // validar SOLO números
+  let soloNumeros = /^[0-9]+$/.test(id);
+
+  if (!id || !soloNumeros || id.length < minLength) {
+    cont.classList.add("input-error");
+
+    input.value = "";
+    input.placeholder = "⚠️ ID INVÁLIDO";
+
+    setTimeout(() => {
+      cont.classList.remove("input-error");
+      input.placeholder = "Ingresa tu ID";
+    }, 1200);
+
+    return false;
+  }
+
+  return true;
+}
 
 
 function confirmarID() {
-    let id = document.getElementById("playerID").value;
-    if (id.trim() === "") return alert("Ingresa tu ID");
+    let input = document.getElementById("playerID");
+    let id = input.value.trim();
+    let contenedor = document.getElementById("inputContenedorEspecial");
 
-    // Guardamos el ID en memoria (pero no mostramos el cuadro todavía)
+    // 🔥 VALIDACIÓN SEGÚN JUEGO
+    let minLength = (juegoActivo === "freefire") ? 8 : 6;
+    let soloNumeros = /^[0-9]+$/.test(id);
+
+    if (id === "" || !soloNumeros || id.length < minLength) {
+
+        // ❌ ERROR VISUAL
+        contenedor.classList.add("input-error");
+        input.value = "";
+        input.placeholder = "⚠️ ID INVÁLIDO";
+
+        setTimeout(() => {
+            contenedor.classList.remove("input-error");
+            input.placeholder = "Ingresa tu ID";
+        }, 1200);
+
+        return;
+    }
+
+    // ===== TU CÓDIGO ORIGINAL (NO TOCADO) =====
+
     localStorage.setItem("ultimoID_" + juegoActivo, id);
 
-    // Mostramos carga y ocultamos el cuadro por si acaso sigue ahí
     document.getElementById("verificando").style.display = "block";
     document.getElementById("diamantes").style.display = "none";
     document.getElementById("ultimoIDBox").style.display = "none"; 
